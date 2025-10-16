@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit Quality Gate..."
+pnpm verify || {
+  echo "❌ Quality Gate failed — Commit blocked."
+  echo ""
+  echo "Fix the issues above before committing."
+  echo "Run 'pnpm quality-gate' for detailed analysis."
+  exit 1
+}
+
+echo "✅ Quality Gate passed!"
+echo "🚀 Proceeding with commit..."
+npx lint-staged

@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Running pre-push Quality Gate (Full Audit)..."
+echo ""
+
+# Run comprehensive checks before push
+pnpm quality-gate || {
+  echo ""
+  echo "❌ Pre-push Quality Gate failed!"
+  echo "🛠️  Fix the issues above before pushing to remote."
+  echo ""
+  echo "Quick fixes:"
+  echo "  - Run 'pnpm lint:fix' for lint issues"
+  echo "  - Run 'pnpm typecheck' for TypeScript errors" 
+  echo "  - Check QUALITY-REPORT.md for detailed analysis"
+  exit 1
+}
+
+echo ""
+echo "✅ All quality checks passed!"
+echo "🎉 Code is ready for remote repository."
