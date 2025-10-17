@@ -2,8 +2,8 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  // ✅ typedRoutes moved out of experimental (Next.js 15.5+)
-  typedRoutes: true,
+  // 🔧 Temporarily disabled for production build (strict typing)
+  typedRoutes: false,
   images: {
     formats: ['image/webp', 'image/avif'],
     remotePatterns: [

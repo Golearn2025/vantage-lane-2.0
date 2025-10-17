@@ -1,6 +1,7 @@
-import { NextResponse } from 'next/server'
-import { performHealthCheck, livenessCheck } from '@/lib/health'
-import { log } from '@/lib/logger'
+import { NextResponse } from 'next/server';
+
+import { livenessCheck, performHealthCheck } from '@/lib/health';
+import { log } from '@/lib/logger';
 
 /**
  * GET /api/health - Comprehensive health check
@@ -8,24 +9,23 @@ import { log } from '@/lib/logger'
  */
 export async function GET() {
   try {
-    const report = await performHealthCheck()
-    
-    const statusCode = report.status === 'healthy' ? 200 : 
-                      report.status === 'degraded' ? 200 : 503
+    const report = await performHealthCheck();
 
-    return NextResponse.json(report, { status: statusCode })
+    const statusCode = report.status === 'healthy' ? 200 : report.status === 'degraded' ? 200 : 503;
+
+    return NextResponse.json(report, { status: statusCode });
   } catch (error) {
-    log.error('Health check endpoint failed', error)
-    
+    log.error('Health check endpoint failed', error);
+
     return NextResponse.json(
       {
         status: 'unhealthy',
         timestamp: new Date().toISOString(),
         error: 'Health check failed',
-        checks: []
+        checks: [],
       },
-      { status: 503 }
-    )
+      { status: 503 },
+    );
   }
 }
 
@@ -35,17 +35,17 @@ export async function GET() {
  */
 export async function HEAD() {
   try {
-    const result = await livenessCheck()
-    
-    return new Response(null, { 
+    const result = await livenessCheck();
+
+    return new Response(null, {
       status: result.status === 'ok' ? 200 : 503,
       headers: {
         'X-Health-Status': result.status,
         'X-Health-Timestamp': result.timestamp,
-      }
-    })
+      },
+    });
   } catch (error) {
-    log.error('Liveness check failed', error)
-    return new Response(null, { status: 503 })
+    log.error('Liveness check failed', error);
+    return new Response(null, { status: 503 });
   }
 }

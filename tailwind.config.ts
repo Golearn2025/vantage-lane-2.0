@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { designTokens } from './src/config/theme.config'
 
 const config: Config = {
   darkMode: ['class'],
@@ -17,34 +18,17 @@ const config: Config = {
       },
     },
     extend: {
+      // Colors from theme.config.ts - single source of truth
       colors: {
-        // Brand colors (extracted from Vantage Lane 1.0)
         brand: {
-          primary: {
-            50: '#fefce8',
-            100: '#fef3c7',
-            200: '#fde68a', 
-            300: '#fcd34d',
-            400: '#f59e0b',
-            500: '#CBB26A', // Primary gold
-            600: '#A68B42',
-            700: '#92400e',
-            800: '#78350f',
-            900: '#451a03',
-          },
-          secondary: '#E5D485', // Light gold
+          primary: designTokens.colors.brand.primary,
+          secondary: designTokens.colors.brand.secondary,
+          accent: designTokens.colors.brand.accent,
         },
+        neutral: designTokens.colors.neutral,
+        semantic: designTokens.colors.semantic,
         
-        // Tier system colors
-        tiers: {
-          bronze: '#CD7F32',
-          silver: '#C0C0C0',
-          gold: '#FFD700', 
-          platinum: '#E5E4E2',
-          elite: '#CBB26A',
-        },
-        
-        // Semantic colors
+        // Legacy shadcn colors (for compatibility)
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -79,15 +63,29 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
+      
+      // Typography from theme.config.ts
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Playfair Display', 'serif'],
       },
+      fontSize: designTokens.typography.fontSize,
+      fontWeight: designTokens.typography.fontWeight,
+      
+      // Spacing from theme.config.ts  
+      spacing: designTokens.spacing,
+      
+      // Border radius from theme.config.ts
+      borderRadius: designTokens.borderRadius,
+      
+      // Shadows from theme.config.ts
+      boxShadow: designTokens.shadows,
+      
+      // Animation timing from theme.config.ts
+      transitionDuration: designTokens.animations.duration,
+      transitionTimingFunction: designTokens.animations.easing,
+      
+      // Custom keyframes
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -97,10 +95,26 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'luxury-float': {
+          '0%, 100%': {
+            transform: 'translateY(0px) scale(1)',
+            filter: 'drop-shadow(0 0 8px rgba(251, 191, 36, 0.4))',
+          },
+          '50%': {
+            transform: 'translateY(-2px) scale(1.03)',
+            filter: 'drop-shadow(0 4px 16px rgba(251, 191, 36, 0.6))',
+          },
+        },
+        'shimmer-sweep': {
+          '0%, 95%, 100%': { opacity: '0', transform: 'translateX(-100%)' },
+          '45%, 55%': { opacity: '0.25', transform: 'translateX(100%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'luxury-float': 'luxury-float 5s ease-in-out infinite',
+        'shimmer-sweep': 'shimmer-sweep 6s infinite',
       },
     },
   },
