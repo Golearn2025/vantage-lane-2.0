@@ -13,6 +13,7 @@ Rules for components in this folder:
 ## 🧩 Atomic Design Rules
 
 ### **What Belongs Here:**
+
 - Basic form elements (Button, Input, Select)
 - Layout primitives (Card, Container, Grid)
 - Navigation elements (Tabs, Breadcrumb, Menu)
@@ -20,6 +21,7 @@ Rules for components in this folder:
 - Data display (Table, List, Avatar)
 
 ### **What Doesn't Belong Here:**
+
 - Business logic components (BookingCard, PricingTable)
 - API-connected components (UserProfile, BookingList)
 - Feature-specific components (PaymentForm, SearchResults)
@@ -79,35 +81,39 @@ ComponentName.displayName = 'ComponentName'
 ## 🎨 Styling Guidelines
 
 ### **Use Theme Colors**
+
 ```typescript
 // ✅ Good - uses theme variables
-className="bg-background text-foreground border-border"
+className = 'bg-background text-foreground border-border'
 
 // ❌ Bad - hardcoded colors
-className="bg-white text-black border-gray-200"
+className = 'bg-white text-black border-gray-200'
 ```
 
 ### **Support Dark Mode**
+
 ```typescript
 // ✅ Automatic theme support
-className="bg-card text-card-foreground"
+className = 'bg-card text-card-foreground'
 
 // ❌ Manual dark mode (avoid unless necessary)
-className="bg-white dark:bg-gray-900"
+className = 'bg-white dark:bg-gray-900'
 ```
 
 ### **Use Semantic Spacing**
+
 ```typescript
 // ✅ Consistent spacing
-className="p-4 m-2 gap-3"
+className = 'p-4 m-2 gap-3'
 
 // ❌ Random spacing
-className="p-[13px] m-[7px] gap-[11px]"
+className = 'p-[13px] m-[7px] gap-[11px]'
 ```
 
 ## ♿ Accessibility Requirements
 
 ### **Interactive Elements**
+
 ```typescript
 // Add proper ARIA labels
 <button aria-label="Close dialog">
@@ -119,6 +125,7 @@ className="p-[13px] m-[7px] gap-[11px]"
 ```
 
 ### **Form Elements**
+
 ```typescript
 // Associate labels with inputs
 <label htmlFor="email">Email</label>
@@ -132,6 +139,7 @@ className="p-[13px] m-[7px] gap-[11px]"
 ## 📏 Size & Variant Patterns
 
 ### **Standard Size System**
+
 ```typescript
 interface SizeProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -142,11 +150,12 @@ const sizeClasses = {
   sm: 'h-8 px-3 text-sm',
   md: 'h-10 px-4 text-base',
   lg: 'h-12 px-6 text-lg',
-  xl: 'h-14 px-8 text-xl'
+  xl: 'h-14 px-8 text-xl',
 }
 ```
 
 ### **Standard Variant System**
+
 ```typescript
 interface VariantProps {
   variant?: 'default' | 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
@@ -158,7 +167,7 @@ const variantClasses = {
   secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
   outline: 'border border-input hover:bg-accent hover:text-accent-foreground',
   ghost: 'hover:bg-accent hover:text-accent-foreground',
-  destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90'
+  destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
 }
 ```
 

@@ -5,7 +5,7 @@
 The Vantage Lane 2.0 Design System is built on **three core principles**:
 
 1. **🎯 Single Source of Truth** - All design decisions centralized in config files
-2. **🔧 Component-First** - Reusable UI primitives with consistent APIs  
+2. **🔧 Component-First** - Reusable UI primitives with consistent APIs
 3. **🌓 Theme-Aware** - Runtime theme switching with design token integration
 
 ---
@@ -13,51 +13,66 @@ The Vantage Lane 2.0 Design System is built on **three core principles**:
 ## 📦 **Config System**
 
 ### **🎨 theme.config.ts - Design Tokens**
+
 ```typescript
 export const designTokens = {
   colors: {
     brand: {
-      primary: '#CBB26A',    // Luxury gold
-      secondary: '#F59E0B',  // Warm amber
-      accent: '#FBBF24',     // Light accent
+      primary: '#CBB26A', // Luxury gold
+      secondary: '#F59E0B', // Warm amber
+      accent: '#FBBF24', // Light accent
     },
-    neutral: { /* 50-950 scale */ },
-    semantic: { success, warning, error, info }
+    neutral: {
+      /* 50-950 scale */
+    },
+    semantic: { success, warning, error, info },
   },
   typography: {
     fontFamily: { sans: ['Inter'], display: ['Playfair Display'] },
-    fontSize: { /* xs to 6xl scale */ },
-    fontWeight: { /* 100 to 900 */ }
+    fontSize: {
+      /* xs to 6xl scale */
+    },
+    fontWeight: {
+      /* 100 to 900 */
+    },
   },
-  spacing: { /* 0.5 to 96 scale */ },
-  borderRadius: { /* sm to full */ },
-  shadows: { /* subtle to dramatic */ },
+  spacing: {
+    /* 0.5 to 96 scale */
+  },
+  borderRadius: {
+    /* sm to full */
+  },
+  shadows: {
+    /* subtle to dramatic */
+  },
   animations: {
     duration: { fast: '150ms', normal: '300ms', slow: '500ms' },
-    easing: { ease, bounce, linear }
-  }
+    easing: { ease, bounce, linear },
+  },
 }
 ```
 
 ### **📝 content.config.ts - All Text Content**
+
 ```typescript
 export const homeContent = {
   hero: {
-    title: "Experience Luxury Transportation",
-    subtitle: "Premium chauffeur service in London...",
-    cta: "Get Started"
+    title: 'Experience Luxury Transportation',
+    subtitle: 'Premium chauffeur service in London...',
+    cta: 'Get Started',
   },
   features: {
-    title: "Why Choose Vantage Lane",
+    title: 'Why Choose Vantage Lane',
     items: [
-      { title: "Professional Chauffeurs", description: "..." },
+      { title: 'Professional Chauffeurs', description: '...' },
       // All content centralized, i18n-ready
-    ]
-  }
+    ],
+  },
 }
 ```
 
 ### **🧭 site.config.ts - Navigation & Metadata**
+
 ```typescript
 export const navigation = {
   main: [
@@ -65,8 +80,12 @@ export const navigation = {
     { label: 'About', href: '/about' },
     // All navigation centralized
   ],
-  services: [/* service items */],
-  footer: {/* footer sections */}
+  services: [
+    /* service items */
+  ],
+  footer: {
+    /* footer sections */
+  },
 }
 ```
 
@@ -75,6 +94,7 @@ export const navigation = {
 ## 🧩 **Component System**
 
 ### **🔘 Button Component**
+
 **Variants:** `primary` `secondary` `ghost` `outline`  
 **Sizes:** `sm` `md` `lg` `xl`
 
@@ -84,6 +104,7 @@ export const navigation = {
 ```
 
 **Implementation:**
+
 ```typescript
 // Connects directly to theme.config.ts
 const { base, variants, sizes } = themeConfig.components.button
@@ -95,6 +116,7 @@ return (
 ```
 
 ### **✍️ Text Component**
+
 **Variants:** `h1` `h2` `h3` `h4` `h5` `body` `lead` `small` `caption`
 
 ```typescript
@@ -105,6 +127,7 @@ return (
 ```
 
 ### **🃏 Card Component**
+
 **Variants:** `default` `bordered` `elevated` `ghost`  
 **Padding:** `none` `sm` `md` `lg` `xl`
 
@@ -116,6 +139,7 @@ return (
 ```
 
 ### **🏷️ Badge Component**
+
 **Variants:** `default` `success` `warning` `error` `info`  
 **Sizes:** `sm` `md` `lg`
 
@@ -129,6 +153,7 @@ return (
 ## 🌓 **Theme System**
 
 ### **ThemeProvider Setup**
+
 ```typescript
 // app/layout.tsx
 <ThemeProvider attribute="class" defaultTheme="system">
@@ -137,6 +162,7 @@ return (
 ```
 
 ### **Theme Toggle Component**
+
 **Variants:** `minimal` `dropdown` `default`
 
 ```typescript
@@ -151,6 +177,7 @@ return (
 ```
 
 ### **Using Theme in Components**
+
 ```typescript
 const { currentTheme, setTheme } = useTheme()
 const resolvedTheme = useResolvedTheme() // never 'system'
@@ -167,6 +194,7 @@ const resolvedTheme = useResolvedTheme() // never 'system'
 ## 🎯 **Design Token Usage**
 
 ### **Tailwind Integration**
+
 All design tokens are automatically available as Tailwind classes:
 
 ```css
@@ -187,6 +215,7 @@ All design tokens are automatically available as Tailwind classes:
 ```
 
 ### **Component Variants**
+
 ```typescript
 // All variants defined in theme.config.ts
 const buttonVariants = {
@@ -202,6 +231,7 @@ const buttonVariants = {
 ## 🔄 **Theme Switching Architecture**
 
 ### **Design Token Structure**
+
 ```typescript
 // CSS Variables (generated from tokens)
 :root {
@@ -215,11 +245,10 @@ const buttonVariants = {
 ```
 
 ### **Runtime Switching**
+
 ```typescript
 // Automatic class switching
-const actualTheme = currentTheme === 'system' 
-  ? systemTheme || 'dark' 
-  : currentTheme
+const actualTheme = currentTheme === 'system' ? systemTheme || 'dark' : currentTheme
 
 document.documentElement.classList.add(actualTheme)
 ```
@@ -229,19 +258,21 @@ document.documentElement.classList.add(actualTheme)
 ## 📊 **Performance & Optimization**
 
 ### **Build Integration**
+
 - **Tailwind Purging** - Only used classes included in bundle
 - **Design Token Tree-shaking** - Unused tokens removed
 - **Component Lazy Loading** - UI components loaded on demand
 - **Theme Persistence** - localStorage with SSR compatibility
 
 ### **Bundle Analysis**
+
 ```bash
 # Check theme system impact
 npm run build
 
 # Results:
 # Base components: ~2kB gzipped
-# Theme system: ~1kB gzipped  
+# Theme system: ~1kB gzipped
 # Design tokens: ~500B gzipped
 # Total overhead: <4kB for entire system
 ```
@@ -251,6 +282,7 @@ npm run build
 ## 🚀 **Extending the System**
 
 ### **Adding New Components**
+
 ```typescript
 // 1. Define variants in theme.config.ts
 export const componentVariants = {
@@ -271,7 +303,7 @@ export const componentVariants = {
 // 2. Create component using system
 export function NewComponent({ variant = 'default', size = 'md' }) {
   const { base, variants, sizes } = themeConfig.components.newComponent
-  
+
   return (
     <div className={cn(base, variants[variant], sizes[size])}>
       {/* component content */}
@@ -281,18 +313,21 @@ export function NewComponent({ variant = 'default', size = 'md' }) {
 ```
 
 ### **Adding New Themes**
+
 ```typescript
 // theme.config.ts
 export const themePresets = {
-  vantage: { /* existing */ },
+  vantage: {
+    /* existing */
+  },
   royal: {
     name: 'Royal Edition',
     colors: {
-      primary: '#8B5A96',  // Royal purple
+      primary: '#8B5A96', // Royal purple
       secondary: '#E6D7FF',
       // Complete color scheme
-    }
-  }
+    },
+  },
 }
 
 // Switch themes at runtime
@@ -304,6 +339,7 @@ setTheme(themePresets.royal)
 ## 🏆 **Best Practices**
 
 ### **✅ DO**
+
 - Use design tokens for ALL styling decisions
 - Leverage component variants instead of custom CSS
 - Test theme switching on all components
@@ -311,6 +347,7 @@ setTheme(themePresets.royal)
 - Use TypeScript for component props
 
 ### **❌ DON'T**
+
 - Hardcode colors or spacing values
 - Create one-off components without variants
 - Skip theme-aware styling in dark mode
@@ -322,6 +359,7 @@ setTheme(themePresets.royal)
 ## 📚 **Quick Reference**
 
 ### **Import Patterns**
+
 ```typescript
 // UI Components
 import { Button, Text, Card, Badge } from '@/components/ui'
@@ -334,11 +372,12 @@ import { themeConfig, homeContent, navigation } from '@/config'
 ```
 
 ### **Common Patterns**
+
 ```typescript
 // Config-driven content
 <Text variant="h1">{homeContent.hero.title}</Text>
 
-// Theme-aware components  
+// Theme-aware components
 <Button variant="primary" size={mobile ? 'sm' : 'lg'}>
 
 // Conditional theming

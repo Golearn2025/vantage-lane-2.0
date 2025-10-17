@@ -19,7 +19,7 @@ export const brandColors = {
   secondary: {
     DEFAULT: 'hsl(48, 50%, 70%)', // Light gold for hover effects
   },
-} as const;
+} as const
 
 // User tier colors (using design system approach)
 export const tierColors = {
@@ -28,7 +28,7 @@ export const tierColors = {
   gold: 'hsl(51, 100%, 50%)', // Gold tier
   platinum: 'hsl(0, 0%, 90%)', // Platinum tier
   elite: 'hsl(45, 35%, 60%)', // Elite tier (same as primary)
-} as const;
+} as const
 
 // Semantic colors
 export const semanticColors = {
@@ -52,7 +52,7 @@ export const semanticColors = {
     500: 'hsl(217, 91%, 60%)',
     700: 'hsl(221, 83%, 53%)',
   },
-} as const;
+} as const
 
 // Neutral colors (for dark theme)
 export const neutralColors = {
@@ -67,7 +67,7 @@ export const neutralColors = {
   800: 'hsl(0, 0%, 16%)', // Card backgrounds (dark theme)
   900: 'hsl(0, 0%, 10%)', // Main background (dark theme)
   950: 'hsl(0, 0%, 4%)', // Deep black
-} as const;
+} as const
 
 // Export all colors
 export const colors = {
@@ -75,6 +75,6 @@ export const colors = {
   tier: tierColors,
   semantic: semanticColors,
   neutral: neutralColors,
-} as const;
+} as const
 
-export default colors;
+export default colors

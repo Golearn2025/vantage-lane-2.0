@@ -1,38 +1,68 @@
-'use client';
+'use client'
 
-import { Monitor, Moon, Sun } from 'lucide-react';
+import { Monitor, Moon, Sun } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
-import { cn } from '@/lib/utils/cn';
-import { useTheme } from '@/providers/theme-provider';
+import { cn } from '@/lib/utils/cn'
+import { useTheme } from '@/providers/theme-provider'
 
 // Tipare mai stricte cu as const
-const _variants = ['default', 'minimal', 'dropdown'] as const;
-const _sizes = ['sm', 'md', 'lg'] as const;
+const _variants = ['default', 'minimal', 'dropdown'] as const
+const _sizes = ['sm', 'md', 'lg'] as const
 
-type Variant = (typeof _variants)[number];
-type Size = (typeof _sizes)[number];
+type Variant = (typeof _variants)[number]
+type Size = (typeof _sizes)[number]
 
 interface ThemeToggleProps {
-  variant?: Variant;
-  size?: Size;
-  className?: string | undefined;
+  variant?: Variant
+  size?: Size
+  className?: string | undefined
 }
 
-export function ThemeToggle({ variant = 'default', size = 'md', className }: ThemeToggleProps) {
-  const { currentTheme, setTheme } = useTheme();
+export function ThemeToggle({
+  variant = 'default',
+  size = 'md',
+  className,
+}: ThemeToggleProps) {
+  const { currentTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Show placeholder during hydration
+  if (!mounted) {
+    return (
+      <div
+        className={cn(
+          'rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950',
+          variant === 'minimal'
+            ? {
+                sm: 'h-8 w-8',
+                md: 'h-10 w-10',
+                lg: 'h-12 w-12',
+              }[size]
+            : 'px-3 py-2',
+          className,
+        )}
+      />
+    )
+  }
 
   if (variant === 'minimal') {
     const sizeClasses = {
       sm: 'h-8 w-8',
       md: 'h-10 w-10',
       lg: 'h-12 w-12',
-    };
+    }
 
     const iconSizes = {
       sm: 'h-3 w-3',
       md: 'h-4 w-4',
       lg: 'h-5 w-5',
-    };
+    }
 
     return (
       <button
@@ -57,18 +87,18 @@ export function ThemeToggle({ variant = 'default', size = 'md', className }: The
           )}
         />
       </button>
-    );
+    )
   }
 
   if (variant === 'dropdown') {
     // Mapare iconuri pentru evitarea redundanței
-    const icons = { light: Sun, dark: Moon, system: Monitor } as const;
+    const icons = { light: Sun, dark: Moon, system: Monitor } as const
 
     return (
       <div className={cn('flex flex-col space-y-1', className)}>
         <div className="mb-2 text-sm font-medium text-neutral-300">Theme</div>
         {(['light', 'dark', 'system'] as const).map(currentThemeOption => {
-          const Icon = icons[currentThemeOption];
+          const Icon = icons[currentThemeOption]
           return (
             <button
               key={currentThemeOption}
@@ -76,7 +106,8 @@ export function ThemeToggle({ variant = 'default', size = 'md', className }: The
               className={cn(
                 'flex items-center rounded-lg px-3 py-2 text-sm transition-colors',
                 'hover:bg-muted/80',
-                currentTheme === currentThemeOption && 'bg-brand-primary/20 text-brand-primary',
+                currentTheme === currentThemeOption &&
+                  'bg-brand-primary/20 text-brand-primary',
               )}
             >
               <Icon className="mr-2 h-4 w-4" />
@@ -85,10 +116,10 @@ export function ThemeToggle({ variant = 'default', size = 'md', className }: The
                 <div className="ml-auto h-2 w-2 rounded-full bg-brand-primary" />
               )}
             </button>
-          );
+          )
         })}
       </div>
-    );
+    )
   }
 
   // Default variant - three buttons
@@ -127,19 +158,19 @@ export function ThemeToggle({ variant = 'default', size = 'md', className }: The
         </button>
       ))}
     </div>
-  );
+  )
 }
 
 /**
  * Compact currentTheme toggle for space-constrained areas
  */
 export function CompactThemeToggle({ className }: { className?: string }) {
-  return <ThemeToggle variant="minimal" size="sm" className={className} />;
+  return <ThemeToggle variant="minimal" size="sm" className={className} />
 }
 
 /**
  * Theme selector for settings pages
  */
 export function ThemeSelector({ className }: { className?: string }) {
-  return <ThemeToggle variant="dropdown" className={className} />;
+  return <ThemeToggle variant="dropdown" className={className} />
 }

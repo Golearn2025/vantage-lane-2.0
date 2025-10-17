@@ -21,6 +21,7 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 ## 🏗️ **Technical Architecture**
 
 ### **Frontend Stack**
+
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript 5.6+ (Strict Mode)
 - **Styling**: Tailwind CSS + Framer Motion
@@ -28,6 +29,7 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 - **State Management**: Zustand + React Server Components
 
 ### **Backend Stack**
+
 - **Database**: Supabase (PostgreSQL)
 - **Authentication**: Supabase Auth + Row Level Security
 - **API**: Next.js API Routes + Server Actions
@@ -36,6 +38,7 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 - **Email**: React Email + Resend
 
 ### **Infrastructure**
+
 - **Hosting**: Vercel (Auto-deployment)
 - **Monitoring**: Sentry + Pino Logger + Vercel Analytics
 - **Security**: Environment validation, audit logs, HTTPS, CSP headers
@@ -44,6 +47,7 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 ## 🚀 **Key Features**
 
 ### **For Customers**
+
 - ✅ **Real-time booking** with instant pricing
 - ✅ **Fleet selection** (executive, luxury, SUV, etc.)
 - ✅ **Route optimization** with traffic-aware ETAs
@@ -53,13 +57,15 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 - ✅ **Real-time tracking** during rides
 
 ### **For Chauffeurs/Partners**
+
 - ✅ **Driver onboarding** with document verification
-- ✅ **Booking management** and calendar integration  
+- ✅ **Booking management** and calendar integration
 - ✅ **Earnings dashboard** with detailed analytics
 - ✅ **Route navigation** and customer communication
 - ✅ **Fleet management** for multi-vehicle operators
 
 ### **For Administrators**
+
 - ✅ **Business analytics** dashboard
 - ✅ **User management** and tier upgrades
 - ✅ **Audit trails** and compliance reporting
@@ -68,13 +74,13 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 
 ## 📊 **Core Metrics & KPIs**
 
-| **Metric** | **Target** | **Description** |
-|------------|------------|-----------------|
-| **Booking Conversion** | >12% | Visitors → completed bookings |
-| **Customer LTV** | £2,500+ | Lifetime value per premium customer |
-| **Partner Satisfaction** | 4.7+ stars | Average chauffeur rating |
-| **Platform Commission** | 15-25% | Revenue share per booking |
-| **Repeat Bookings** | >40% | Customers with 2+ bookings |
+| **Metric**               | **Target** | **Description**                     |
+| ------------------------ | ---------- | ----------------------------------- |
+| **Booking Conversion**   | >12%       | Visitors → completed bookings       |
+| **Customer LTV**         | £2,500+    | Lifetime value per premium customer |
+| **Partner Satisfaction** | 4.7+ stars | Average chauffeur rating            |
+| **Platform Commission**  | 15-25%     | Revenue share per booking           |
+| **Repeat Bookings**      | >40%       | Customers with 2+ bookings          |
 
 ## 🛡️ **Security & Compliance**
 
@@ -87,18 +93,21 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 ## 📈 **Growth Strategy**
 
 ### **Phase 1** (Q4 2024): London Launch
+
 - Launch in Central London
-- 50+ verified chauffeurs  
+- 50+ verified chauffeurs
 - B2B partnerships with hotels/corporates
 - Premium individual customers
 
 ### **Phase 2** (Q1 2025): UK Expansion
+
 - Expand to Birmingham, Manchester, Edinburgh
 - Corporate enterprise features
 - Mobile app launch
 - API partnerships
 
-### **Phase 3** (Q2-Q3 2025): Advanced Features  
+### **Phase 3** (Q2-Q3 2025): Advanced Features
+
 - AI-powered pricing optimization
 - Predictive booking suggestions
 - Corporate travel integration
@@ -114,11 +123,11 @@ Vantage Lane is a **premium luxury chauffeur booking platform** that connects di
 
 1. **Premium Focus**: High-end market vs mass-market competitors
 2. **Local Expertise**: Deep London market knowledge
-3. **Technology**: Modern platform vs legacy booking systems  
+3. **Technology**: Modern platform vs legacy booking systems
 4. **Service Quality**: Vetted chauffeurs vs gig economy drivers
 5. **Corporate Integration**: B2B features vs consumer-only platforms
 
 ---
 
-**Vision**: *To become the definitive platform for luxury ground transportation in the UK*  
-**Mission**: *Connecting discerning travelers with exceptional chauffeur experiences*
+**Vision**: _To become the definitive platform for luxury ground transportation in the UK_  
+**Mission**: _Connecting discerning travelers with exceptional chauffeur experiences_

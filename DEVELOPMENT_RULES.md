@@ -36,6 +36,7 @@
 ## 🔄 Import Rules
 
 ### **✅ ALLOWED IMPORTS:**
+
 ```typescript
 // UI components can import:
 import { cn } from '@/lib/utils/cn'
@@ -52,6 +53,7 @@ import type { BookingType } from '@/types/booking'
 ```
 
 ### **❌ FORBIDDEN IMPORTS:**
+
 ```typescript
 // UI components CANNOT import:
 import { BookingWizard } from '@/components/features/booking' // ❌
@@ -64,18 +66,21 @@ import { PaymentModal } from '@/components/features/payments' // ❌
 ## 🎯 Component Rules
 
 ### **Atomic Components (`/ui/`)**
+
 - Must be pure UI (no API calls or business logic)
 - Can only import from `/lib/utils/` and other `/ui/` components
 - Must support theme variants
 - Required props must be typed
 
-### **Shared Components (`/shared/`)**  
+### **Shared Components (`/shared/`)**
+
 - Can contain light business logic
 - Can import from `/ui/` and `/lib/`
 - Should be reusable across features
 - Must be domain-agnostic
 
 ### **Feature Components (`/features/`)**
+
 - Can contain complex business logic
 - Can import from anywhere except other features
 - Should be self-contained modules

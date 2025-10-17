@@ -7,9 +7,9 @@
 **ÎNAINTE de a modifica ORICE fișier din această listă, AI trebuie să întrebe:**
 
 ```
-🔒 FREEZE-LIST ALERT: 
+🔒 FREEZE-LIST ALERT:
 Fișierul [nume_fișier] este în zona protejată.
-AM VOIE SĂ ÎL MODIFIC? 
+AM VOIE SĂ ÎL MODIFIC?
 
 Aștept răspuns explicit "DA" sau "NU".
 Dacă nu primesc "DA" clar → STOP execution.
@@ -18,9 +18,10 @@ Dacă nu primesc "DA" clar → STOP execution.
 ## 🚫 **FIȘIERE COMPLET INTERZISE**
 
 ### **📦 Configurații Core**
+
 ```
 /package.json                    # Dependencies management
-/package-lock.json               # Lock file pentru dependencies  
+/package-lock.json               # Lock file pentru dependencies
 /pnpm-lock.yaml                  # pnpm lock file
 /tsconfig.json                   # TypeScript configuration
 /next.config.ts                  # Next.js configuration
@@ -33,6 +34,7 @@ Dacă nu primesc "DA" clar → STOP execution.
 ```
 
 ### **🔧 Infrastructure Core**
+
 ```
 /src/lib/env.ts                  # Environment validation (CRITICAL)
 /src/lib/logger/                 # Logging system (ALL FILES)
@@ -44,6 +46,7 @@ Dacă nu primesc "DA" clar → STOP execution.
 ```
 
 ### **📚 Documentație Governance**
+
 ```
 /docs/AI_RULES.md                # AI behavior rules (CRITICAL)
 /docs/QUALITY-GATE.md            # Quality control system
@@ -53,6 +56,7 @@ Dacă nu primesc "DA" clar → STOP execution.
 ```
 
 ### **🏗️ Foundation Files**
+
 ```
 /src/design-system/tokens/       # Design tokens (ALL FILES)
 /src/lib/utils/cn.ts             # className utility
@@ -63,6 +67,7 @@ Dacă nu primesc "DA" clar → STOP execution.
 ## 🟡 **FIȘIERE CU RESTRICȚII PARȚIALE**
 
 ### **⚠️ Modificări Doar cu Justificare**
+
 ```
 /README.md                       # Doar pentru actualizări majore
 /src/constants/routes.ts         # Doar pentru rute noi validate
@@ -71,47 +76,53 @@ Dacă nu primesc "DA" clar → STOP execution.
 
 ## 🔐 **PROTOCOALE DE ACCES**
 
-### **Nivel 1: ZERO ACCESS** 
+### **Nivel 1: ZERO ACCESS**
+
 Fișierele din categoria "COMPLET INTERZISE" nu pot fi modificate sub nicio formă fără aprobare explicită.
 
 ### **Nivel 2: RESTRICTED ACCESS**
+
 Fișierele din categoria "RESTRICȚII PARȚIALE" pot fi modificate doar cu:
+
 1. **Justificare clară** a modificării
-2. **Aprobare explicită** 
+2. **Aprobare explicită**
 3. **Backup plan** în caz de probleme
 
 ### **Nivel 3: MONITORED ACCESS**
+
 Toate celelalte fișiere pot fi modificate dar sunt monitorizate de Quality Gate.
 
 ## 🤖 **AI BEHAVIOR REQUIREMENTS**
 
 ### **Verificare Obligatorie Înainte de Modificare:**
+
 ```javascript
 // Pseudo-cod pentru AI verification
 function canModifyFile(filePath) {
   const freezeList = getFreezeList()
-  
+
   if (freezeList.forbidden.includes(filePath)) {
     askExplicitPermission(filePath)
     return waitForApproval()
   }
-  
+
   if (freezeList.restricted.includes(filePath)) {
     requestJustification(filePath)
     return waitForApproval()
   }
-  
+
   return true // Safe to modify
 }
 ```
 
 ### **Exemple de Întrebări Obligatorii:**
+
 ```
 🔒 FREEZE ALERT: package.json
 Vreau să adaug dependency-ul "new-package@1.0.0".
 Este această modificare aprobată? (DA/NU)
 
-🔒 FREEZE ALERT: src/lib/env.ts  
+🔒 FREEZE ALERT: src/lib/env.ts
 Vreau să adaug environment variable "NEW_API_KEY".
 Este această modificare aprobată? (DA/NU)
 
@@ -126,11 +137,12 @@ Este această modificare aprobată? (DA/NU)
 
 1. **STOP IMEDIAT** - nu executa modificarea
 2. **ALERT USER** cu mesajul standard
-3. **WAIT FOR EXPLICIT APPROVAL** 
+3. **WAIT FOR EXPLICIT APPROVAL**
 4. **Dacă nu primește "DA"** → abandon task
 5. **LOG VIOLATION ATTEMPT** pentru audit
 
 ### **Raportare Încercare de Încălcare:**
+
 ```
 🚨 FREEZE VIOLATION ATTEMPT
 File: /src/lib/env.ts
@@ -144,9 +156,11 @@ Task Context: Adding Redis configuration
 ## 🛡️ **SELF-PROTECTION MECHANISM**
 
 ### **Meta-Freeze Rule:**
+
 **Acest fișier (FREEZE-LIST.md) se protejează pe sine!**
 
 Dacă AI încearcă să modifice FREEZE-LIST.md:
+
 ```
 🔴 CRITICAL FREEZE VIOLATION
 ÎNCERCARE DE MODIFICARE A FREEZE-LIST.md DETECTATĂ!
@@ -158,24 +172,26 @@ Contactează administratorul pentru modificări de governance.
 
 ## 📊 **FREEZE ZONES STATISTICS**
 
-| **Zone Type** | **Files Count** | **Protection Level** |
-|---------------|-----------------|---------------------|
-| **Core Config** | 10 files | 🔴 MAXIMUM |
-| **Infrastructure** | 8 files/folders | 🔴 MAXIMUM |
-| **Documentation** | 5 files | 🔴 MAXIMUM |
-| **Foundation** | 4 files/folders | 🔴 MAXIMUM |
-| **Restricted** | 3 files | 🟡 MEDIUM |
-| **TOTAL PROTECTED** | **30 items** | **Mixed** |
+| **Zone Type**       | **Files Count** | **Protection Level** |
+| ------------------- | --------------- | -------------------- |
+| **Core Config**     | 10 files        | 🔴 MAXIMUM           |
+| **Infrastructure**  | 8 files/folders | 🔴 MAXIMUM           |
+| **Documentation**   | 5 files         | 🔴 MAXIMUM           |
+| **Foundation**      | 4 files/folders | 🔴 MAXIMUM           |
+| **Restricted**      | 3 files         | 🟡 MEDIUM            |
+| **TOTAL PROTECTED** | **30 items**    | **Mixed**            |
 
 ## 🎯 **JUSTIFICATION EXAMPLES**
 
 ### **✅ Valid Justifications:**
+
 - "Security vulnerability fix in dependency"
-- "Critical bug fix in logging system"  
+- "Critical bug fix in logging system"
 - "New environment variable for required feature"
 - "TypeScript version upgrade for compatibility"
 
 ### **❌ Invalid Justifications:**
+
 - "Want to try different approach"
 - "Code looks messy"
 - "Personal preference"
@@ -184,6 +200,7 @@ Contactează administratorul pentru modificări de governance.
 ## 🚨 **EMERGENCY PROCEDURES**
 
 ### **În Caz de Emergency:**
+
 1. **Document emergency reason**
 2. **Get explicit admin approval**
 3. **Create backup of original file**
@@ -195,9 +212,9 @@ Contactează administratorul pentru modificări de governance.
 
 ## 📝 **CHANGE LOG**
 
-| **Date** | **File** | **Change** | **Approved By** | **Reason** |
-|----------|----------|------------|-----------------|------------|
-| 2024-10-17 | FREEZE-LIST.md | Initial creation | Admin | Setup governance |
+| **Date**   | **File**       | **Change**       | **Approved By** | **Reason**       |
+| ---------- | -------------- | ---------------- | --------------- | ---------------- |
+| 2024-10-17 | FREEZE-LIST.md | Initial creation | Admin           | Setup governance |
 
 ---
 

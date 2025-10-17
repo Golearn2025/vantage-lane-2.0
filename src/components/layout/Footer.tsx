@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import type React from 'react';
+import Link from 'next/link'
+import type React from 'react'
 
-import { footer } from '@/config/site.config';
-import { cn } from '@/lib/utils/cn';
+import { footer } from '@/config/site.config'
+import { cn } from '@/lib/utils/cn'
 
-import { Container } from './Container';
-import { Logo } from './navbar/Logo';
+import { Container } from './Container'
+import { Logo } from './navbar/Logo'
 
 /**
  * 🦶 Premium Footer for Vantage Lane 2.0
@@ -22,15 +22,15 @@ import { Logo } from './navbar/Logo';
  */
 
 export interface FooterProps {
-  readonly className?: string;
+  readonly className?: string
 }
 
 // Use config instead of hardcoded values
-const footerSections = footer.sections;
-const socialLinks = footer.social;
+const footerSections = footer.sections
+const socialLinks = footer.social
 
 export default function Footer({ className }: FooterProps): React.JSX.Element {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer
@@ -38,11 +38,10 @@ export default function Footer({ className }: FooterProps): React.JSX.Element {
       itemType="http://schema.org/Organization"
       className={cn(
         'relative overflow-hidden border-t transition-colors duration-300 ease-in-out',
-        // Gradient luxury background
-        'bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950',
+        // Theme-aware backgrounds
+        'bg-white dark:bg-gradient-to-b dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950',
         'before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_top,rgba(203,178,106,0.05),transparent_70%)]',
-        'border-neutral-800 text-neutral-300 dark:text-neutral-300',
-        'light:bg-neutral-50 light:text-neutral-700 light:border-neutral-200',
+        'border-neutral-200 text-neutral-700 dark:border-neutral-800 dark:text-neutral-300',
         className,
       )}
     >
@@ -55,8 +54,8 @@ export default function Footer({ className }: FooterProps): React.JSX.Element {
           <div className="lg:col-span-2">
             <Logo size="lg" className="mb-6" />
             <p className="max-w-md text-sm leading-relaxed text-neutral-400 dark:text-neutral-500">
-              Premium chauffeur service in London. Experience luxury travel with our professional
-              drivers and exceptional fleet.
+              Premium chauffeur service in London. Experience luxury travel with our
+              professional drivers and exceptional fleet.
             </p>
 
             {/* Social icons */}
@@ -142,5 +141,5 @@ export default function Footer({ className }: FooterProps): React.JSX.Element {
         </div>
       </Container>
     </footer>
-  );
+  )
 }

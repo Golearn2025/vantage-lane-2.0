@@ -13,9 +13,9 @@ const nextConfig: NextConfig = {
         pathname: '/storage/v1/object/public/**',
       },
       {
-        protocol: 'https', 
+        protocol: 'https',
         hostname: 'images.unsplash.com',
-      }
+      },
     ],
   },
   async headers() {

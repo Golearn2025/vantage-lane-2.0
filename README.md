@@ -15,6 +15,7 @@
 Vantage Lane 2.0 represents the pinnacle of modern web development - a **completely configurable, scalable, and maintainable** luxury transportation platform. Built with **zero hardcodings**, featuring a complete **design system**, and ready for **instant deployment**.
 
 ### **🎯 Key Achievements:**
+
 - ✅ **Zero Hardcoddings** - All content, colors, and configurations centralized
 - ✅ **Complete Design System** - Reusable UI components with theme tokens
 - ✅ **Enterprise Structure** - Scalable to infinite complexity
@@ -25,6 +26,7 @@ Vantage Lane 2.0 represents the pinnacle of modern web development - a **complet
 ## 🏗️ **Enterprise Architecture**
 
 ### **📁 Project Structure (Final)**
+
 ```
 src/
 ├── app/                    # Next.js App Router (Pages)
@@ -56,22 +58,24 @@ src/
 ### **🎨 Design System Highlights:**
 
 **🔧 Config-Driven Everything:**
+
 ```typescript
 // theme.config.ts - Single source for all design tokens
 export const designTokens = {
-  colors: { brand: { primary: '#CBB26A' }, /* ... */ },
-  typography: { fontFamily: { sans: ['Inter'] }, /* ... */ },
+  colors: { brand: { primary: '#CBB26A' } /* ... */ },
+  typography: { fontFamily: { sans: ['Inter'] } /* ... */ },
   // All UI components use these tokens
 }
 
 // content.config.ts - All text content
 export const homeContent = {
-  hero: { title: "Experience Luxury Transportation" },
+  hero: { title: 'Experience Luxury Transportation' },
   // No hardcoded strings anywhere
 }
 ```
 
 **🎯 Reusable UI Components:**
+
 ```typescript
 // All components connected to design system
 <Button variant="primary" size="lg">  // theme.config variants
@@ -80,6 +84,7 @@ export const homeContent = {
 ```
 
 **🌓 Theme System:**
+
 - Runtime theme switching (dark/light/system)
 - CSS variables integration with Tailwind
 - Consistent across all components
@@ -89,6 +94,7 @@ export const homeContent = {
 ## 🛠️ **Development**
 
 ### **Quick Start:**
+
 ```bash
 # Install dependencies
 pnpm install

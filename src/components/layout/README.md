@@ -5,6 +5,7 @@ Enterprise-grade layout system with complete component ecosystem.
 ## 📁 Components Overview
 
 ### Core Layout Components
+
 - **`Layout.tsx`** - Main application wrapper with navbar/footer
 - **`Container.tsx`** - Responsive content containers
 - **`Section.tsx`** - Semantic sections with spacing/backgrounds
@@ -12,10 +13,12 @@ Enterprise-grade layout system with complete component ecosystem.
 - **`Footer.tsx`** - Multi-column footer with luxury styling
 
 ### Services Menu Components
+
 - **`ServicesMenu.tsx`** - Desktop dropdown menu
 - **`ServicesMenuMobile.tsx`** - Mobile accordion with animations
 
 ### Navbar Sub-components
+
 - **`Logo.tsx`** - Luxury logo with shimmer effects
 - **`NavLinks.tsx`** - Navigation links with active states
 - **`UserMenu.tsx`** - Authentication buttons
@@ -23,6 +26,7 @@ Enterprise-grade layout system with complete component ecosystem.
 ## 🚀 Quick Start
 
 ### Basic Page Layout
+
 ```tsx
 import { Layout } from '@/components/layout'
 
@@ -36,14 +40,15 @@ export default function HomePage() {
 ```
 
 ### Custom Layout (Auth Page)
+
 ```tsx
 import { Layout } from '@/components/layout'
 
 export default function LoginPage() {
   return (
-    <Layout 
-      hideNavbar 
-      hideFooter 
+    <Layout
+      hideNavbar
+      hideFooter
       fullHeight
       pageTitle="Sign In"
       className="bg-gradient-to-br from-neutral-950 to-neutral-900"
@@ -55,6 +60,7 @@ export default function LoginPage() {
 ```
 
 ### Section-based Layout
+
 ```tsx
 import { Layout, Section } from '@/components/layout'
 
@@ -64,11 +70,11 @@ export default function AboutPage() {
       <Section spacing="xl" background="gradient" align="center">
         <Hero title="About Vantage Lane" />
       </Section>
-      
+
       <Section spacing="lg" background="neutral" contained>
         <AboutContent />
       </Section>
-      
+
       <Section spacing="md" contained={false}>
         <FullWidthGallery />
       </Section>
@@ -80,21 +86,23 @@ export default function AboutPage() {
 ## 🎯 Layout Props
 
 ### LayoutProps
+
 ```typescript
 interface LayoutProps {
-  readonly children: React.ReactNode    // Page content
-  readonly hideNavbar?: boolean         // Hide navigation
-  readonly hideFooter?: boolean         // Hide footer
-  readonly className?: string           // Main content styling
-  readonly containerClassName?: string  // Container styling
-  readonly fullHeight?: boolean         // Enable min-h-screen
-  readonly pageTitle?: string           // SEO page title
+  readonly children: React.ReactNode // Page content
+  readonly hideNavbar?: boolean // Hide navigation
+  readonly hideFooter?: boolean // Hide footer
+  readonly className?: string // Main content styling
+  readonly containerClassName?: string // Container styling
+  readonly fullHeight?: boolean // Enable min-h-screen
+  readonly pageTitle?: string // SEO page title
 }
 ```
 
 ## 🎨 Design Patterns
 
 ### Landing Page Pattern
+
 ```tsx
 <Layout>
   <Section spacing="xl" background="gradient" align="center">
@@ -110,6 +118,7 @@ interface LayoutProps {
 ```
 
 ### Dashboard Pattern
+
 ```tsx
 <Layout hideFooter pageTitle="Dashboard">
   <Section spacing="md" contained={false}>
@@ -119,9 +128,10 @@ interface LayoutProps {
 ```
 
 ### Authentication Pattern
+
 ```tsx
 <Layout hideNavbar hideFooter fullHeight>
-  <div className="flex items-center justify-center min-h-screen">
+  <div className="flex min-h-screen items-center justify-center">
     <AuthForm />
   </div>
 </Layout>
@@ -130,6 +140,7 @@ interface LayoutProps {
 ## 🏷️ Component Features
 
 ### Layout.tsx Features
+
 - **Semantic HTML** - Uses proper `<main>`, `<nav>`, `<footer>` tags
 - **SEO Optimized** - Automatic title generation
 - **Accessibility** - ARIA landmarks and labels
@@ -138,6 +149,7 @@ interface LayoutProps {
 - **Theme Aware** - Smooth dark/light transitions
 
 ### Performance Optimizations
+
 - **Zero Layout Shift** - Consistent spacing system
 - **Minimal Rerenders** - Optimized React patterns
 - **Tree Shaking** - Individual component exports
@@ -153,6 +165,7 @@ interface LayoutProps {
 ## 🎯 Best Practices
 
 ### Import Pattern
+
 ```tsx
 // ✅ Good - Named imports from index
 import { Layout, Section, Container } from '@/components/layout'
@@ -162,6 +175,7 @@ import Layout from '@/components/layout/Layout'
 ```
 
 ### Composition Pattern
+
 ```tsx
 // ✅ Good - Section-based composition
 <Layout>
@@ -179,6 +193,7 @@ import Layout from '@/components/layout/Layout'
 ```
 
 ### SEO Pattern
+
 ```tsx
 // ✅ Good - Descriptive page titles
 <Layout pageTitle="Premium Chauffeur Services">
@@ -190,6 +205,7 @@ import Layout from '@/components/layout/Layout'
 ## 🧱 Architecture
 
 The layout system follows atomic design principles:
+
 - **Atoms** - Logo, NavLinks, UserMenu
 - **Molecules** - ServicesMenu, Container
 - **Organisms** - Navbar, Footer, Section

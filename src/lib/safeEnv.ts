@@ -1,4 +1,4 @@
-import { envsafe, str } from 'envsafe';
+import { envsafe, str } from 'envsafe'
 
 /**
  * Safe environment variables with build-time fallbacks
@@ -7,11 +7,13 @@ import { envsafe, str } from 'envsafe';
  * while still enforcing validation in runtime environments.
  */
 
-const isBuild = process.env.NODE_ENV === 'production' && !process.env.VERCEL;
+const isBuild = process.env.NODE_ENV === 'production' && !process.env.VERCEL
 
 export const safeEnv = envsafe({
   // Supabase (Critical - always required in runtime)
-  NEXT_PUBLIC_SUPABASE_URL: isBuild ? str({ devDefault: 'https://mock.supabase.co' }) : str(),
+  NEXT_PUBLIC_SUPABASE_URL: isBuild
+    ? str({ devDefault: 'https://mock.supabase.co' })
+    : str(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: isBuild
     ? str({ devDefault: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mock' })
     : str(),
@@ -20,7 +22,9 @@ export const safeEnv = envsafe({
     : str(),
 
   // Stripe (Critical - always required in runtime)
-  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: isBuild ? str({ devDefault: 'pk_test_mock_key' }) : str(),
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: isBuild
+    ? str({ devDefault: 'pk_test_mock_key' })
+    : str(),
   STRIPE_SECRET_KEY: isBuild ? str({ devDefault: 'sk_test_mock_key' }) : str(),
   STRIPE_WEBHOOK_SECRET: isBuild ? str({ devDefault: 'whsec_mock_secret' }) : str(),
 
@@ -49,10 +53,10 @@ export const safeEnv = envsafe({
   UPSTASH_REDIS_REST_TOKEN: str({
     default: '',
   }),
-});
+})
 
 /**
  * Use this for critical application logic that requires validated env vars
  * Examples: Database connections, API authentication, payment processing
  */
-export default safeEnv;
+export default safeEnv

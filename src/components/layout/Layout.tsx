@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import type React from 'react';
+import type React from 'react'
 
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/lib/utils/cn'
 
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Footer from './Footer'
+import Navbar from './Navbar'
 
 /**
  * 🏗️ Main Layout component for Vantage Lane 2.0
@@ -32,19 +32,19 @@ import Navbar from './Navbar';
 
 export interface LayoutProps {
   /** Main content */
-  readonly children: React.ReactNode;
+  readonly children: React.ReactNode
   /** Hide navigation bar */
-  readonly hideNavbar?: boolean;
+  readonly hideNavbar?: boolean
   /** Hide footer */
-  readonly hideFooter?: boolean;
+  readonly hideFooter?: boolean
   /** Custom main content styling */
-  readonly className?: string;
+  readonly className?: string
   /** Main content container styling */
-  readonly containerClassName?: string;
+  readonly containerClassName?: string
   /** Enable full height layout */
-  readonly fullHeight?: boolean;
+  readonly fullHeight?: boolean
   /** Page title for SEO */
-  readonly pageTitle?: string;
+  readonly pageTitle?: string
 }
 
 /**
@@ -97,5 +97,5 @@ export default function Layout({
       {/* Footer */}
       {!hideFooter && <Footer />}
     </div>
-  );
+  )
 }

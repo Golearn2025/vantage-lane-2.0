@@ -27,7 +27,7 @@ const config: Config = {
         },
         neutral: designTokens.colors.neutral,
         semantic: designTokens.colors.semantic,
-        
+
         // Legacy shadcn colors (for compatibility)
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -63,7 +63,7 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
-      
+
       // Typography from theme.config.ts
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -71,20 +71,20 @@ const config: Config = {
       },
       fontSize: designTokens.typography.fontSize,
       fontWeight: designTokens.typography.fontWeight,
-      
-      // Spacing from theme.config.ts  
+
+      // Spacing from theme.config.ts
       spacing: designTokens.spacing,
-      
+
       // Border radius from theme.config.ts
       borderRadius: designTokens.borderRadius,
-      
+
       // Shadows from theme.config.ts
       boxShadow: designTokens.shadows,
-      
+
       // Animation timing from theme.config.ts
       transitionDuration: designTokens.animations.duration,
       transitionTimingFunction: designTokens.animations.easing,
-      
+
       // Custom keyframes
       keyframes: {
         'accordion-down': {
@@ -121,7 +121,7 @@ const config: Config = {
   plugins: [
     require('tailwindcss-animate'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
   ],
 }
 

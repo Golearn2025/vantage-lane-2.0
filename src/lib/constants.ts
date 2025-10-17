@@ -7,6 +7,6 @@
  */
 
 // Re-export main configs for backward compatibility
-export { aboutContent, homeContent } from '@/config/content.config';
-export { footer, navigation, siteMetadata } from '@/config/site.config';
-export { designTokens, themeConfig } from '@/config/theme.config';
+export { aboutContent, homeContent } from '@/config/content.config'
+export { footer, navigation, siteMetadata } from '@/config/site.config'
+export { designTokens, themeConfig } from '@/config/theme.config'

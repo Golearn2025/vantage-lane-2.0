@@ -24,7 +24,7 @@ export const breakpoints = {
 
   // Large desktop
   '2xl': '1536px',
-} as const;
+} as const
 
 export const breakpointValues = {
   xs: 475,
@@ -33,7 +33,7 @@ export const breakpointValues = {
   lg: 1024,
   xl: 1280,
   '2xl': 1536,
-} as const;
+} as const
 
 /**
  * Media query helpers for use in components
@@ -53,7 +53,7 @@ export const mediaQueries = {
   'max-lg': `(max-width: ${breakpointValues.lg - 1}px)`,
   'max-xl': `(max-width: ${breakpointValues.xl - 1}px)`,
   'max-2xl': `(max-width: ${breakpointValues['2xl'] - 1}px)`,
-} as const;
+} as const
 
 /**
  * Container max-widths for consistent layouts
@@ -65,7 +65,7 @@ export const containers = {
   lg: '1024px', // Constrained on large screens
   xl: '1280px', // Max content width
   '2xl': '1400px', // Maximum container width
-} as const;
+} as const
 
 /**
  * Common responsive patterns used in Vantage Lane
@@ -91,7 +91,7 @@ export const responsivePatterns = {
   gridDouble: 'sm', // 2 columns from sm
   gridTriple: 'lg', // 3 columns from lg
   gridQuad: 'xl', // 4 columns from xl
-} as const;
+} as const
 
 /**
  * Typography responsive scales
@@ -122,7 +122,7 @@ export const responsiveTypography = {
     base: 'text-sm', // Mobile
     md: 'text-base', // Tablet+
   },
-} as const;
+} as const
 
 /**
  * Spacing responsive scales
@@ -149,7 +149,7 @@ export const responsiveSpacing = {
     md: 'gap-6', // Tablet: 24px
     lg: 'gap-8', // Desktop: 32px
   },
-} as const;
+} as const
 
 /**
  * Component-specific responsive behaviors
@@ -178,15 +178,15 @@ export const componentResponsive = {
     mobile: 'aspect-[16/10]', // Wider aspect on mobile
     desktop: 'aspect-[4/3]', // Standard aspect on desktop
   },
-} as const;
+} as const
 
 /**
  * Utility function to check if current screen matches breakpoint
  */
 export function useMediaQuery(query: keyof typeof mediaQueries) {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') return false
 
-  return window.matchMedia(mediaQueries[query]).matches;
+  return window.matchMedia(mediaQueries[query]).matches
 }
 
 /**
@@ -196,15 +196,15 @@ export function getResponsiveClass(
   baseClass: string,
   responsiveClasses: Partial<Record<keyof typeof breakpoints, string>>,
 ): string {
-  const classes = [baseClass];
+  const classes = [baseClass]
 
   Object.entries(responsiveClasses).forEach(([breakpoint, className]) => {
     if (className) {
-      classes.push(`${breakpoint}:${className}`);
+      classes.push(`${breakpoint}:${className}`)
     }
-  });
+  })
 
-  return classes.join(' ');
+  return classes.join(' ')
 }
 
-export default breakpoints;
+export default breakpoints

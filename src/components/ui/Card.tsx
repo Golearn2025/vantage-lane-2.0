@@ -5,19 +5,19 @@
  * Perfect for features, services, testimonials, etc.
  */
 
-import type React from 'react';
+import type React from 'react'
 
-import { themeConfig } from '@/config/theme.config';
-import { cn } from '@/lib/utils/cn';
+import { themeConfig } from '@/config/theme.config'
+import { cn } from '@/lib/utils/cn'
 
-type CardVariant = keyof typeof themeConfig.components.card.variants;
+type CardVariant = keyof typeof themeConfig.components.card.variants
 
 export interface CardProps {
-  readonly variant?: CardVariant;
-  readonly className?: string;
-  readonly children: React.ReactNode;
-  readonly padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-  readonly hover?: boolean;
+  readonly variant?: CardVariant
+  readonly className?: string
+  readonly children: React.ReactNode
+  readonly padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
+  readonly hover?: boolean
 }
 
 /**
@@ -36,7 +36,7 @@ export function Card({
     md: 'p-4',
     lg: 'p-6',
     xl: 'p-8',
-  };
+  }
 
   return (
     <div
@@ -55,7 +55,7 @@ export function Card({
     >
       {children}
     </div>
-  );
+  )
 }
 
-export default Card;
+export default Card

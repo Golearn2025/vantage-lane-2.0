@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type React from 'react';
-import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import type React from 'react'
+import { useState } from 'react'
 
-import { navigation } from '@/config/site.config';
-import { cn } from '@/lib/utils/cn';
+import { navigation } from '@/config/site.config'
+import { cn } from '@/lib/utils/cn'
 
 /**
  * 📱 Premium Mobile Services Menu for Vantage Lane 2.0
@@ -21,25 +21,25 @@ import { cn } from '@/lib/utils/cn';
  */
 
 // Use config instead of hardcoded values
-const services = navigation.services;
+const services = navigation.services
 
 export interface ServicesMenuMobileProps {
-  readonly className?: string;
-  readonly onItemClick?: () => void;
+  readonly className?: string
+  readonly onItemClick?: () => void
 }
 
 export default function ServicesMenuMobile({
   className,
   onItemClick,
 }: ServicesMenuMobileProps): React.JSX.Element {
-  const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  const isServicesActive = pathname.startsWith('/services');
+  const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const isServicesActive = pathname.startsWith('/services')
 
   const handleItemClick = () => {
-    setOpen(false);
-    onItemClick?.();
-  };
+    setOpen(false)
+    onItemClick?.()
+  }
 
   return (
     <div
@@ -54,7 +54,9 @@ export default function ServicesMenuMobile({
           'flex w-full items-center justify-between px-4 py-3 text-left',
           'text-sm font-medium transition-colors duration-200',
           'hover:text-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/50',
-          isServicesActive ? 'text-brand-primary' : 'text-neutral-700 dark:text-neutral-300',
+          isServicesActive
+            ? 'text-brand-primary'
+            : 'text-neutral-700 dark:text-neutral-300',
         )}
         aria-expanded={open}
         aria-controls="services-mobile-menu"
@@ -71,7 +73,12 @@ export default function ServicesMenuMobile({
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </button>
 
@@ -87,7 +94,7 @@ export default function ServicesMenuMobile({
             className="space-y-1 px-3 pb-3"
           >
             {services.map(service => {
-              const isActive = pathname === service.href;
+              const isActive = pathname === service.href
               return (
                 <motion.div
                   key={service.href}
@@ -119,11 +126,11 @@ export default function ServicesMenuMobile({
                     )}
                   </Link>
                 </motion.div>
-              );
+              )
             })}
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  );
+  )
 }

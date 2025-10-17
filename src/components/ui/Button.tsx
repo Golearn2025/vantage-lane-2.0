@@ -5,23 +5,23 @@
  * Connected to theme.config.ts for consistency.
  */
 
-import type React from 'react';
+import type React from 'react'
 
-import { themeConfig } from '@/config/theme.config';
-import { cn } from '@/lib/utils/cn';
+import { themeConfig } from '@/config/theme.config'
+import { cn } from '@/lib/utils/cn'
 
-type ButtonVariant = keyof typeof themeConfig.components.button.variants;
-type ButtonSize = keyof typeof themeConfig.components.button.sizes;
+type ButtonVariant = keyof typeof themeConfig.components.button.variants
+type ButtonSize = keyof typeof themeConfig.components.button.sizes
 
 export interface ButtonProps {
-  readonly variant?: ButtonVariant;
-  readonly size?: ButtonSize;
-  readonly className?: string;
-  readonly disabled?: boolean;
-  readonly loading?: boolean;
-  readonly children: React.ReactNode;
-  readonly onClick?: () => void;
-  readonly type?: 'button' | 'submit' | 'reset';
+  readonly variant?: ButtonVariant
+  readonly size?: ButtonSize
+  readonly className?: string
+  readonly disabled?: boolean
+  readonly loading?: boolean
+  readonly children: React.ReactNode
+  readonly onClick?: () => void
+  readonly type?: 'button' | 'submit' | 'reset'
 }
 
 /**
@@ -66,7 +66,7 @@ export function Button({
         children
       )}
     </button>
-  );
+  )
 }
 
-export default Button;
+export default Button

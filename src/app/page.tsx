@@ -1,6 +1,6 @@
-import { Section } from '@/components/layout';
-import { Button, Card, Text } from '@/components/ui';
-import { homeContent } from '@/config/content.config';
+import { Section } from '@/components/layout'
+import { Button, Card, Text } from '@/components/ui'
+import { homeContent } from '@/config/content.config'
 
 export default function HomePage() {
   return (
@@ -20,14 +20,12 @@ export default function HomePage() {
       </Section>
 
       {/* Features Section */}
-      <Section spacing="lg" contained>
+      <Section spacing="lg" contained background="neutral">
         <div className="mb-12 text-center">
           <Text variant="h2" className="mb-4">
             {homeContent.features.title}
           </Text>
-          <Text variant="lead" className="text-neutral-600 dark:text-neutral-400">
-            {homeContent.features.subtitle}
-          </Text>
+          <Text variant="lead">{homeContent.features.subtitle}</Text>
         </div>
 
         <div className="grid gap-8 md:grid-cols-3">
@@ -36,9 +34,7 @@ export default function HomePage() {
               <Text variant="h5" className="mb-3">
                 {feature.title}
               </Text>
-              <Text variant="body" className="text-neutral-600 dark:text-neutral-400">
-                {feature.description}
-              </Text>
+              <Text variant="body">{feature.description}</Text>
             </Card>
           ))}
         </div>
@@ -50,12 +46,12 @@ export default function HomePage() {
           <Text variant="h2" className="mb-4">
             {homeContent.cta.title}
           </Text>
-          <Text variant="lead" className="mb-8 text-neutral-600 dark:text-neutral-400">
+          <Text variant="lead" className="mb-8">
             {homeContent.cta.subtitle}
           </Text>
           <Button size="lg">{homeContent.cta.button}</Button>
         </div>
       </Section>
     </>
-  );
+  )
 }

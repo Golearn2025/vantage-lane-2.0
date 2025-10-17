@@ -1,17 +1,17 @@
-import { type NextRequest } from 'next/server';
+import { type NextRequest } from 'next/server'
 
-import { log } from './index';
+import { log } from './index'
 
 interface RequestLogData {
-  method: string;
-  url: string;
-  userAgent?: string | undefined;
-  ip?: string | undefined;
-  userId?: string | undefined;
-  duration?: number;
-  status?: number;
-  error?: string;
-  [key: string]: unknown;
+  method: string
+  url: string
+  userAgent?: string | undefined
+  ip?: string | undefined
+  userId?: string | undefined
+  duration?: number
+  status?: number
+  error?: string
+  [key: string]: unknown
 }
 
 /**
@@ -23,39 +23,42 @@ export async function logRequest<T extends Response>(
   handler: () => Promise<T>,
   userId?: string,
 ): Promise<T> {
-  const start = Date.now();
+  const start = Date.now()
   const requestData: RequestLogData = {
     method: request.method,
     url: request.url,
     userAgent: request.headers.get('user-agent') ?? undefined,
-    ip: request.headers.get('x-forwarded-for') ?? request.headers.get('x-real-ip') ?? undefined,
+    ip:
+      request.headers.get('x-forwarded-for') ??
+      request.headers.get('x-real-ip') ??
+      undefined,
     userId,
-  };
+  }
 
-  log.info('API Request started', requestData);
+  log.info('API Request started', requestData)
 
   try {
-    const response = await handler();
-    const duration = Date.now() - start;
+    const response = await handler()
+    const duration = Date.now() - start
 
     log.info('API Request completed', {
       ...requestData,
       duration,
       status: response.status,
-    });
+    })
 
-    return response;
+    return response
   } catch (error) {
-    const duration = Date.now() - start;
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const duration = Date.now() - start
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
 
     log.error('API Request failed', error, {
       ...requestData,
       duration,
       error: errorMessage,
-    });
+    })
 
-    throw error;
+    throw error
   }
 }
 
@@ -67,12 +70,16 @@ export function logAuth(
   userId?: string,
   meta?: Record<string, unknown>,
 ) {
-  log.info(`Auth: ${event}`, { userId, event, ...meta });
+  log.info(`Auth: ${event}`, { userId, event, ...meta })
 }
 
 /**
  * Log business events (bookings, payments, etc.)
  */
-export function logBusiness(event: string, userId?: string, meta?: Record<string, unknown>) {
-  log.info(`Business: ${event}`, { userId, event, ...meta });
+export function logBusiness(
+  event: string,
+  userId?: string,
+  meta?: Record<string, unknown>,
+) {
+  log.info(`Business: ${event}`, { userId, event, ...meta })
 }

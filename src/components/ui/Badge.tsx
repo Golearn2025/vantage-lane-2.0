@@ -5,19 +5,19 @@
  * Perfect for tags, status, categories, etc.
  */
 
-import type React from 'react';
+import type React from 'react'
 
-import { themeConfig } from '@/config/theme.config';
-import { cn } from '@/lib/utils/cn';
+import { themeConfig } from '@/config/theme.config'
+import { cn } from '@/lib/utils/cn'
 
-type BadgeVariant = keyof typeof themeConfig.components.badge.variants;
-type BadgeSize = keyof typeof themeConfig.components.badge.sizes;
+type BadgeVariant = keyof typeof themeConfig.components.badge.variants
+type BadgeSize = keyof typeof themeConfig.components.badge.sizes
 
 export interface BadgeProps {
-  readonly variant?: BadgeVariant;
-  readonly size?: BadgeSize;
-  readonly className?: string;
-  readonly children: React.ReactNode;
+  readonly variant?: BadgeVariant
+  readonly size?: BadgeSize
+  readonly className?: string
+  readonly children: React.ReactNode
 }
 
 /**
@@ -44,7 +44,7 @@ export function Badge({
     >
       {children}
     </span>
-  );
+  )
 }
 
-export default Badge;
+export default Badge

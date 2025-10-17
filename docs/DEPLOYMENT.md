@@ -3,13 +3,14 @@
 ## ✅ **Pre-deployment Checklist**
 
 ### **🔍 Quality Gates**
+
 Run these commands to ensure production readiness:
 
 ```bash
 # 1. Lint check (should be 0 errors)
 npm run lint:quiet
 
-# 2. TypeScript check (should be 0 errors)  
+# 2. TypeScript check (should be 0 errors)
 npm run typecheck
 
 # 3. Production build test
@@ -20,6 +21,7 @@ npm run prebuild
 ```
 
 **✅ Expected Results:**
+
 - ESLint: 0 errors, 0 warnings
 - TypeScript: 0 errors
 - Build: Successful compilation with static pages
@@ -31,6 +33,7 @@ npm run prebuild
 ### **🔥 Vercel (Recommended)**
 
 **One-click deploy:**
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -40,6 +43,7 @@ npm run deploy:vercel
 ```
 
 **Or via GitHub integration:**
+
 1. Connect repository to Vercel
 2. Set environment variables:
    ```
@@ -48,6 +52,7 @@ npm run deploy:vercel
 3. Deploy automatically on `main` branch pushes
 
 **Vercel Configuration** (vercel.json):
+
 ```json
 {
   "buildCommand": "npm run build",
@@ -63,6 +68,7 @@ npm run deploy:vercel
 ### **🌐 Netlify**
 
 **Manual deploy:**
+
 ```bash
 # Install Netlify CLI
 npm i -g netlify-cli
@@ -73,6 +79,7 @@ npm run deploy:netlify
 ```
 
 **Netlify Configuration** (netlify.toml):
+
 ```toml
 [build]
   command = "npm run build"
@@ -91,6 +98,7 @@ npm run deploy:netlify
 ### **🐳 Docker Deployment**
 
 **Dockerfile:**
+
 ```dockerfile
 FROM node:20-alpine AS base
 
@@ -120,6 +128,7 @@ CMD ["node", "server.js"]
 ```
 
 **Build and run:**
+
 ```bash
 docker build -t vantage-lane-2.0 .
 docker run -p 3000:3000 vantage-lane-2.0
@@ -130,6 +139,7 @@ docker run -p 3000:3000 vantage-lane-2.0
 ## ⚙️ **Environment Configuration**
 
 ### **🔐 Required Environment Variables**
+
 ```bash
 # .env.production
 NODE_ENV=production
@@ -141,6 +151,7 @@ SUPABASE_ANON_KEY=your_supabase_key
 ```
 
 ### **📊 Performance Optimization**
+
 ```bash
 # .env.production (additional optimizations)
 NEXT_TELEMETRY_DISABLED=1
@@ -152,6 +163,7 @@ ANALYZE=true  # For bundle analysis
 ## 🔧 **Build Optimization**
 
 ### **📦 Bundle Analysis**
+
 ```bash
 # Analyze bundle size
 ANALYZE=true npm run build
@@ -163,6 +175,7 @@ ANALYZE=true npm run build
 ```
 
 ### **⚡ Performance Features**
+
 - **Static Generation**: Homepage, About page pre-rendered
 - **Image Optimization**: Next.js automatic optimization
 - **Tree Shaking**: Unused code eliminated
@@ -176,11 +189,13 @@ ANALYZE=true npm run build
 ### **🚀 Recommended CDN Settings**
 
 **Vercel Edge Network:**
+
 - Automatic global distribution
 - Edge caching for static assets
 - Dynamic content served from nearest region
 
 **Cloudflare (if using custom domain):**
+
 ```javascript
 // Caching rules
 {
@@ -196,6 +211,7 @@ ANALYZE=true npm run build
 ## 📈 **Monitoring & Analytics**
 
 ### **📊 Built-in Monitoring**
+
 The app includes monitoring endpoints:
 
 ```bash
@@ -211,6 +227,7 @@ GET /api/health
 ```
 
 ### **🔍 Recommended Monitoring Stack**
+
 - **Vercel Analytics** - Page views and performance
 - **Sentry** - Error tracking and performance monitoring
 - **LogRocket** - User session recordings
@@ -221,6 +238,7 @@ GET /api/health
 ## 🔄 **CI/CD Pipeline**
 
 ### **GitHub Actions** (.github/workflows/deploy.yml):
+
 ```yaml
 name: Deploy to Production
 
@@ -237,12 +255,12 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - run: npm ci
       - run: npm run lint:quiet
       - run: npm run typecheck
       - run: npm run build
-  
+
   deploy:
     needs: quality-check
     runs-on: ubuntu-latest
@@ -261,6 +279,7 @@ jobs:
 ## 🛡️ **Security Considerations**
 
 ### **🔒 Production Security Checklist**
+
 - ✅ HTTPS enforced (automatic with Vercel/Netlify)
 - ✅ Security headers configured
 - ✅ No sensitive data in client bundle
@@ -268,29 +287,32 @@ jobs:
 - ✅ Content Security Policy implemented
 
 ### **📋 Security Headers** (next.config.js):
+
 ```javascript
 const securityHeaders = [
   {
     key: 'X-Frame-Options',
-    value: 'DENY'
+    value: 'DENY',
   },
   {
     key: 'X-Content-Type-Options',
-    value: 'nosniff'
+    value: 'nosniff',
   },
   {
     key: 'Referrer-Policy',
-    value: 'strict-origin-when-cross-origin'
-  }
+    value: 'strict-origin-when-cross-origin',
+  },
 ]
 
 module.exports = {
   async headers() {
-    return [{
-      source: '/(.*)',
-      headers: securityHeaders,
-    }]
-  }
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ]
+  },
 }
 ```
 
@@ -299,6 +321,7 @@ module.exports = {
 ## 🎯 **Post-Deployment Verification**
 
 ### **✅ Production Checklist**
+
 After deployment, verify:
 
 1. **🏠 Homepage Loading**
@@ -327,6 +350,7 @@ After deployment, verify:
    - Social media previews
 
 ### **🧪 Production Testing Commands**
+
 ```bash
 # Test production build locally
 npm run build && npm run start
@@ -345,18 +369,21 @@ npx lighthouse http://localhost:3000 --output=html
 ### **❌ Common Issues & Solutions**
 
 **Build fails with font errors:**
+
 ```bash
 # Solution: Use ignore flag
 NEXT_FONT_IGNORE_ERRORS=true npm run build
 ```
 
 **Theme not persisting:**
+
 ```javascript
 // Check localStorage in browser
 localStorage.getItem('vantage-lane-theme')
 ```
 
 **Bundle too large:**
+
 ```bash
 # Analyze bundle
 ANALYZE=true npm run build
@@ -364,6 +391,7 @@ ANALYZE=true npm run build
 ```
 
 **ESLint errors on deployment:**
+
 ```bash
 # Fix locally first
 npm run lint:fix
@@ -371,6 +399,7 @@ npm run format
 ```
 
 ### **📞 Support & Maintenance**
+
 - Check CHANGELOG.md for recent updates
 - Review GitHub issues for known problems
 - Monitor deployment logs for runtime errors
@@ -381,6 +410,7 @@ npm run format
 ## 🏆 **Deployment Success Metrics**
 
 **🎯 Target Performance:**
+
 - **Build Time**: <3 seconds
 - **Bundle Size**: <110kB gzipped
 - **Lighthouse Score**: >95
@@ -388,8 +418,9 @@ npm run format
 - **Zero Errors**: ESLint, TypeScript, Runtime
 
 **✅ Current Status:**
+
 - ✅ All quality gates passing
-- ✅ Production build successful  
+- ✅ Production build successful
 - ✅ Zero ESLint errors (from 4258!)
 - ✅ 100% TypeScript coverage
 - ✅ Theme system fully functional

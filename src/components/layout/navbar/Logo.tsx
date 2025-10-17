@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import type React from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
+import type React from 'react'
 
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/lib/utils/cn'
 
 /**
  * 🎨 Vantage Lane Logo (final version)
@@ -16,17 +16,17 @@ import { cn } from '@/lib/utils/cn';
 
 export interface LogoProps {
   /** Size preset */
-  readonly size?: 'sm' | 'md' | 'lg';
+  readonly size?: 'sm' | 'md' | 'lg'
   /** Link destination */
-  readonly href?: string;
+  readonly href?: string
   /** Disable floating animation */
-  readonly static?: boolean;
+  readonly static?: boolean
   /** Disable shimmer effect */
-  readonly noShimmer?: boolean;
+  readonly noShimmer?: boolean
   /** Extra classes */
-  readonly className?: string;
+  readonly className?: string
   /** Click handler */
-  readonly onClick?: () => void;
+  readonly onClick?: () => void
 }
 
 export function Logo({
@@ -41,7 +41,7 @@ export function Logo({
     sm: 'w-10 h-10',
     md: 'w-14 h-14',
     lg: 'w-20 h-20',
-  };
+  }
 
   const logoElement = (
     <div
@@ -63,7 +63,7 @@ export function Logo({
         priority
       />
     </div>
-  );
+  )
 
   if (href) {
     return (
@@ -75,10 +75,10 @@ export function Logo({
       >
         {logoElement}
       </Link>
-    );
+    )
   }
 
-  return logoElement;
+  return logoElement
 }
 
-export default Logo;
+export default Logo

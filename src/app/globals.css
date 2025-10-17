@@ -2,8 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5% 64.9%;
+    --radius: 0.5rem;
+    --brand-primary: 45 93% 47%; /* Vantage Lane Gold */
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --brand-primary: 45 93% 47%; /* Same gold in both themes */
+  }
+}
+
 /* Custom global styles */
-html, body {
+html,
+body {
   scroll-behavior: smooth;
 }
 
@@ -15,7 +65,10 @@ html, body {
 
 /* Smooth transitions for theme switch */
 * {
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /**
@@ -24,7 +77,8 @@ html, body {
 
 /* ✨ Logo luxury floating animation */
 @keyframes luxuryFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) scale(1);
     filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
   }
@@ -41,11 +95,14 @@ html, body {
 
 /* 🪄 Shimmer sweep effect for premium feel */
 @keyframes shimmerSweep {
-  0%, 95%, 100% {
+  0%,
+  95%,
+  100% {
     opacity: 0;
     transform: translateX(-100%);
   }
-  45%, 55% {
+  45%,
+  55% {
     opacity: 0.25;
     transform: translateX(100%);
   }
@@ -57,7 +114,7 @@ html, body {
 }
 
 .animate-logoShimmer::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(

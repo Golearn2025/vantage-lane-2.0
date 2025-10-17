@@ -5,25 +5,30 @@
  * Connected to theme.config.ts design tokens.
  */
 
-import React from 'react';
+import React from 'react'
 
-import { themeConfig } from '@/config/theme.config';
-import { cn } from '@/lib/utils/cn';
+import { themeConfig } from '@/config/theme.config'
+import { cn } from '@/lib/utils/cn'
 
-type TextVariant = keyof typeof themeConfig.components.text.variants;
-type TextElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
+type TextVariant = keyof typeof themeConfig.components.text.variants
+type TextElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div'
 
 export interface TextProps {
-  readonly variant?: TextVariant;
-  readonly as?: TextElement;
-  readonly className?: string;
-  readonly children: React.ReactNode;
+  readonly variant?: TextVariant
+  readonly as?: TextElement
+  readonly className?: string
+  readonly children: React.ReactNode
 }
 
 /**
  * 📝 Universal text component with semantic HTML elements
  */
-export function Text({ variant = 'body', as, className, children }: TextProps): React.JSX.Element {
+export function Text({
+  variant = 'body',
+  as,
+  className,
+  children,
+}: TextProps): React.JSX.Element {
   // Auto-determine element based on variant if not specified
   const defaultElement: TextElement =
     variant === 'h1'
@@ -40,9 +45,9 @@ export function Text({ variant = 'body', as, className, children }: TextProps): 
                 ? 'h6'
                 : variant === 'body' || variant === 'lead'
                   ? 'p'
-                  : 'span';
+                  : 'span'
 
-  const Element = as || defaultElement;
+  const Element = as || defaultElement
 
   return React.createElement(
     Element,
@@ -55,7 +60,7 @@ export function Text({ variant = 'body', as, className, children }: TextProps): 
       ),
     },
     children,
-  );
+  )
 }
 
-export default Text;
+export default Text

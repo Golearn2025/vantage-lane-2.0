@@ -15,11 +15,13 @@ This folder contains all UI and feature components for Vantage Lane.
 ## 🆕 Adding a New Component
 
 ### 1. **Determine Component Type**
+
 - **Atomic (`ui/`)**: Pure UI with no business logic
 - **Shared (`shared/`)**: Reusable with light logic
 - **Feature (`features/`)**: Domain-specific with complex logic
 
 ### 2. **Create Component File**
+
 ```typescript
 // Example: src/components/ui/button.tsx
 'use client'
@@ -34,12 +36,12 @@ interface ButtonProps {
   onClick?: () => void
 }
 
-export function Button({ 
-  variant = 'primary', 
-  size = 'md', 
+export function Button({
+  variant = 'primary',
+  size = 'md',
   className,
   children,
-  onClick 
+  onClick
 }: ButtonProps) {
   return (
     <button
@@ -66,6 +68,7 @@ export function Button({
 ```
 
 ### 3. **Add to Index File**
+
 ```typescript
 // src/components/ui/index.ts
 export { Button } from './button'
@@ -75,28 +78,33 @@ export { Input } from './input'
 ```
 
 ### 4. **Test Component**
+
 Create a temporary page to test the component in isolation.
 
 ## 🎯 Component Guidelines
 
 ### **Props Naming**
+
 - Use descriptive names: `isLoading` not `loading`
 - Boolean props: prefix with `is`, `has`, `can`, `should`
 - Event handlers: prefix with `on` (`onClick`, `onSubmit`)
 
 ### **Styling**
+
 - Use Tailwind CSS classes
 - Use `cn()` helper for conditional classes
 - Support theme variants (light/dark)
 - No hardcoded colors or sizes
 
 ### **Accessibility**
+
 - Add proper `aria-label` for interactive elements
 - Use semantic HTML elements
 - Support keyboard navigation
 - Test with screen readers
 
 ### **TypeScript**
+
 - Always define prop interfaces
 - Use specific types over `any`
 - Export component props types for reuse
@@ -124,8 +132,8 @@ Every component must support both light and dark themes:
 
 ```typescript
 // Use theme-aware classes
-className="bg-background text-foreground border-border"
+className = 'bg-background text-foreground border-border'
 
 // Avoid hardcoded colors
-className="bg-white text-black" // ❌
+className = 'bg-white text-black' // ❌
 ```

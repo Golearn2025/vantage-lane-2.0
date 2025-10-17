@@ -264,12 +264,14 @@ vantage-lane-2.0/
 ## 🎯 **Design Principles**
 
 ### **📁 Folder Organization**
+
 - **Feature-based**: Group by business domain (auth, booking, payments)
 - **Layer separation**: UI, business logic, data access clearly separated
 - **Colocation**: Related files (component + test + story) in same folder
 - **Scalability**: Structure supports growth without reorganization
 
 ### **📝 File Naming Conventions**
+
 - **Components**: `PascalCase.tsx` (e.g., `BookingCard.tsx`)
 - **Hooks**: `kebab-case.ts` with `use-` prefix (e.g., `use-auth.ts`)
 - **Utilities**: `kebab-case.ts` (e.g., `format-date.ts`)
@@ -277,6 +279,7 @@ vantage-lane-2.0/
 - **API Routes**: `route.ts` (Next.js App Router convention)
 
 ### **📦 Import Strategy**
+
 - **Absolute imports**: Use `@/` alias for all internal imports
 - **Barrel exports**: `index.ts` files for clean imports
 - **Type imports**: Use `import type` for TypeScript types

@@ -23,6 +23,7 @@ feature-name/
 ```
 
 ### **Example: Booking Feature**
+
 ```
 booking/
 ├── components/
@@ -50,15 +51,17 @@ booking/
 ## 🎯 Feature Development Rules
 
 ### **1. Self-Contained Modules**
+
 - Each feature should work independently
 - Should be extractable without breaking other features
 - Can be developed by separate team members
 
 ### **2. Import Rules**
+
 ```typescript
 // ✅ Features CAN import from:
 import { Button } from '@/components/ui/button'
-import { PricingCard } from '@/components/shared/PricingCard' 
+import { PricingCard } from '@/components/shared/PricingCard'
 import { useDebounce } from '@/lib/hooks/useDebounce'
 import type { UserType } from '@/types/user'
 
@@ -67,11 +70,13 @@ import { PaymentModal } from '@/components/features/payments' // ❌
 ```
 
 ### **3. State Management**
+
 - Use React Context for feature-wide state
 - Custom hooks for reusable logic
 - Keep state close to where it's used
 
 ### **4. API Integration**
+
 ```typescript
 // Use services from /lib/ or /server/
 import { bookingService } from '@/server/services/booking'
@@ -83,11 +88,13 @@ const { data } = await supabase.from('bookings') // ❌
 ## 🆕 Creating a New Feature
 
 ### **1. Create Feature Directory**
+
 ```bash
 mkdir -p src/features/new-feature/{components,hooks}
 ```
 
 ### **2. Define Types**
+
 ```typescript
 // src/features/new-feature/types.ts
 export interface NewFeatureType {
@@ -103,20 +110,22 @@ export interface NewFeatureFormData {
 ```
 
 ### **3. Create Constants**
+
 ```typescript
 // src/features/new-feature/constants.ts
 export const NEW_FEATURE_STATUS = {
   ACTIVE: 'active',
-  INACTIVE: 'inactive'
+  INACTIVE: 'inactive',
 } as const
 
 export const DEFAULT_FORM_VALUES = {
   name: '',
-  description: ''
+  description: '',
 }
 ```
 
 ### **4. Build Components**
+
 ```typescript
 // src/features/new-feature/components/NewFeatureCard.tsx
 import { Card } from '@/components/ui/card'
@@ -137,6 +146,7 @@ export function NewFeatureCard({ feature }: NewFeatureCardProps) {
 ```
 
 ### **5. Create Custom Hooks**
+
 ```typescript
 // src/features/new-feature/hooks/useNewFeature.ts
 import { useState } from 'react'
@@ -153,12 +163,13 @@ export function useNewFeature() {
   return {
     features,
     isLoading,
-    addFeature
+    addFeature,
   }
 }
 ```
 
 ### **6. Export Everything**
+
 ```typescript
 // src/features/new-feature/index.ts
 export { NewFeatureCard } from './components/NewFeatureCard'
@@ -172,7 +183,7 @@ export { NEW_FEATURE_STATUS, DEFAULT_FORM_VALUES } from './constants'
 For complex features like booking, consider adding:
 
 - **`/providers/`** → React Context for feature state
-- **`/utils/`** → Feature-specific utility functions  
+- **`/utils/`** → Feature-specific utility functions
 - **`/services/`** → API integration layer
 - **`README.md`** → Feature-specific documentation
 

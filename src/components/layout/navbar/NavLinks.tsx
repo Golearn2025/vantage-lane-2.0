@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type React from 'react';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import type React from 'react'
 
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/lib/utils/cn'
 
 interface NavItem {
-  readonly href: string;
-  readonly label: string;
-  readonly external?: boolean;
+  readonly href: string
+  readonly label: string
+  readonly external?: boolean
 }
 
 export interface NavLinksProps {
-  readonly items: readonly NavItem[];
-  readonly className?: string;
-  readonly disableActive?: boolean;
+  readonly items: readonly NavItem[]
+  readonly className?: string
+  readonly disableActive?: boolean
 }
 
 export function NavLinks({
@@ -23,8 +23,8 @@ export function NavLinks({
   className,
   disableActive = false,
 }: NavLinksProps): React.JSX.Element {
-  const pathname = usePathname();
-  const normalize = (url: string) => url.replace(/\/+$/, '');
+  const pathname = usePathname()
+  const normalize = (url: string) => url.replace(/\/+$/, '')
 
   return (
     <nav
@@ -33,7 +33,7 @@ export function NavLinks({
       aria-label="Main navigation"
     >
       {items.map(item => {
-        const isActive = !disableActive && normalize(pathname) === normalize(item.href);
+        const isActive = !disableActive && normalize(pathname) === normalize(item.href)
 
         return (
           <Link
@@ -45,7 +45,9 @@ export function NavLinks({
               'text-sm font-medium transition-colors duration-300',
               'hover:text-brand-primary focus:text-brand-primary',
               'rounded-sm px-1 py-1 focus:outline-none focus:ring-2 focus:ring-brand-primary/50',
-              isActive ? 'text-brand-primary' : 'text-neutral-300 hover:text-brand-primary',
+              isActive
+                ? 'text-brand-primary'
+                : 'text-neutral-700 hover:text-brand-primary dark:text-neutral-300 dark:hover:text-brand-primary',
             )}
             aria-current={isActive ? 'page' : undefined}
           >
@@ -56,10 +58,10 @@ export function NavLinks({
               </span>
             )}
           </Link>
-        );
+        )
       })}
     </nav>
-  );
+  )
 }
 
-export default NavLinks;
+export default NavLinks

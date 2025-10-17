@@ -5,8 +5,9 @@
 ## 🚦 **REGULI OBLIGATORII**
 
 ### **✅ ÎNAINTE DE ORICE ACȚIUNE:**
+
 1. **Citește documentele obligatorii:**
-   - `AI_RULES.md` 
+   - `AI_RULES.md`
    - `DEVELOPMENT_GUIDELINES.md`
    - `FREEZE-LIST.md`
    - `ARCHITECTURE.md`
@@ -20,15 +21,17 @@
 ### **✅ DUPĂ ORICE MODIFICARE:**
 
 #### **1. Audit Automat Cod**
+
 ```bash
 # Rulează automat aceste comenzi:
 pnpm lint        # Zero warnings
-pnpm typecheck   # Zero errors  
+pnpm typecheck   # Zero errors
 pnpm test        # Toate testele pass
 pnpm verify      # Audit custom script
 ```
 
 #### **2. Verificări Obligatorii**
+
 - ❌ **Zero `any` types** în cod
 - ❌ **Zero `console.log`** statements
 - ❌ **Zero `TODO`** comments nerezolvate
@@ -38,6 +41,7 @@ pnpm verify      # Audit custom script
 - ❌ **Zero modificări în FREEZE-LIST** fără aprobare
 
 #### **3. Verificări Structură**
+
 - ✅ **Fișierul e în folderul corect** conform FILE_STRUCTURE.md
 - ✅ **Naming convention corect** (PascalCase, kebab-case, etc.)
 - ✅ **Import paths corecte** cu `@/` alias
@@ -69,22 +73,24 @@ Următoarele fișiere/foldere **NU POT FI MODIFICATE** fără aprobare explicit�
 ## 🤖 **AI BEHAVIOR REQUIREMENTS**
 
 ### **PROMPT VALIDATION OBLIGATORIE**
+
 Înainte de orice cod, AI trebuie să confirme:
 
 ```
 ✅ Am citit AI_RULES.md
-✅ Am citit DEVELOPMENT_GUIDELINES.md  
+✅ Am citit DEVELOPMENT_GUIDELINES.md
 ✅ Am citit QUALITY-GATE.md
 ✅ Am verificat FREEZE-LIST.md
 ✅ Înțeleg restricțiile și regulile
 ```
 
 ### **POST-ACTION VALIDATION**
+
 După orice modificare, AI trebuie să raporteze:
 
 ```
 ✅ Lint check: PASSED
-✅ TypeScript check: PASSED  
+✅ TypeScript check: PASSED
 ✅ Test check: PASSED
 ✅ File size check: PASSED (<250 lines)
 ✅ No 'any' types: PASSED
@@ -99,6 +105,7 @@ După orice modificare, AI trebuie să raporteze:
 ## ⚠️ **FAILURE PROTOCOL**
 
 ### **Dacă Quality Gate FAILS:**
+
 1. **STOP IMEDIAT** - nu continua cu alte acțiuni
 2. **ȘTERGE fișierul problematic** dacă a fost creat
 3. **RAPORTEAZĂ exact ce reguli au fost încălcate**
@@ -106,6 +113,7 @@ După orice modificare, AI trebuie să raporteze:
 5. **NU încerca alternative** fără aprobare
 
 ### **Exemple de Failure:**
+
 ```bash
 ❌ QUALITY GATE FAILED
 - Fișier depășește 250 linii: src/components/large-component.tsx (312 lines)
@@ -119,6 +127,7 @@ ACTION: Stopping execution. Please fix issues above.
 ## 🛠️ **TOOLS & AUTOMATION**
 
 ### **Auto-Verify Script**
+
 ```json
 {
   "scripts": {
@@ -129,6 +138,7 @@ ACTION: Stopping execution. Please fix issues above.
 ```
 
 ### **Pre-commit Hooks**
+
 ```bash
 # .husky/pre-commit
 #!/usr/bin/env sh
@@ -140,16 +150,16 @@ pnpm quality-gate || exit 1
 
 ## 📋 **COMPLIANCE MATRIX**
 
-| **Rule** | **Check Type** | **Automated** | **Severity** |
-|----------|----------------|---------------|--------------|
-| No `any` types | Static analysis | ✅ Yes | 🔴 BLOCKER |
-| No `console.log` | Static analysis | ✅ Yes | 🔴 BLOCKER |
-| File size <250 lines | File analysis | ✅ Yes | 🔴 BLOCKER |
-| No hardcoded colors | Regex search | ✅ Yes | 🟡 WARNING |
-| Correct structure | Path validation | ✅ Yes | 🔴 BLOCKER |
-| FREEZE-LIST respect | Path checking | ✅ Yes | 🔴 BLOCKER |
-| Lint compliance | ESLint | ✅ Yes | 🔴 BLOCKER |
-| Type compliance | TypeScript | ✅ Yes | 🔴 BLOCKER |
+| **Rule**             | **Check Type**  | **Automated** | **Severity** |
+| -------------------- | --------------- | ------------- | ------------ |
+| No `any` types       | Static analysis | ✅ Yes        | 🔴 BLOCKER   |
+| No `console.log`     | Static analysis | ✅ Yes        | 🔴 BLOCKER   |
+| File size <250 lines | File analysis   | ✅ Yes        | 🔴 BLOCKER   |
+| No hardcoded colors  | Regex search    | ✅ Yes        | 🟡 WARNING   |
+| Correct structure    | Path validation | ✅ Yes        | 🔴 BLOCKER   |
+| FREEZE-LIST respect  | Path checking   | ✅ Yes        | 🔴 BLOCKER   |
+| Lint compliance      | ESLint          | ✅ Yes        | 🔴 BLOCKER   |
+| Type compliance      | TypeScript      | ✅ Yes        | 🔴 BLOCKER   |
 
 ## 🎯 **SUCCESS CRITERIA**
 

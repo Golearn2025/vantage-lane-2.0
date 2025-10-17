@@ -1,8 +1,8 @@
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from '@sentry/nextjs'
 
-import { env } from '@/lib/env';
+import { env } from '@/lib/env'
 
-const SENTRY_DSN = env.NEXT_PUBLIC_SENTRY_DSN;
+const SENTRY_DSN = env.NEXT_PUBLIC_SENTRY_DSN
 
 if (SENTRY_DSN) {
   Sentry.init({
@@ -22,9 +22,9 @@ if (SENTRY_DSN) {
     beforeSend(event) {
       // Filter out development errors
       if (process.env.NODE_ENV === 'development') {
-        return null;
+        return null
       }
-      return event;
+      return event
     },
 
     // Custom error filtering
@@ -36,7 +36,7 @@ if (SENTRY_DSN) {
       'NetworkError',
       'Failed to fetch',
     ],
-  });
+  })
 }
 
-export { Sentry };
+export { Sentry }

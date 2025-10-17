@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import type React from 'react';
+import type React from 'react'
 
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/lib/utils/cn'
 
 /**
  * 👤 User Menu for Vantage Lane 2.0
@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils/cn';
 
 export interface UserMenuProps {
   /** Custom styling */
-  readonly className?: string;
+  readonly className?: string
 }
 
 /**
@@ -49,7 +49,7 @@ export function UserMenu({ className }: UserMenuProps): React.JSX.Element {
         Get Started
       </button>
     </div>
-  );
+  )
 }
 
-export default UserMenu;
+export default UserMenu

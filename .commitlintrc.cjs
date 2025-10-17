@@ -6,7 +6,7 @@ module.exports = {
       'always',
       [
         'feat',
-        'fix', 
+        'fix',
         'docs',
         'style',
         'refactor',
@@ -15,8 +15,8 @@ module.exports = {
         'perf',
         'ci',
         'build',
-        'revert'
-      ]
-    ]
-  }
+        'revert',
+      ],
+    ],
+  },
 }

@@ -4,19 +4,19 @@ Welcome to the comprehensive documentation for Vantage Lane 2.0 - a modern luxur
 
 ## 📖 Documentation Structure
 
-| Document | Description |
-|----------|-------------|
-| **[Project Overview](./PROJECT_OVERVIEW.md)** | High-level project goals, features, and architecture |
-| **[File Structure](./FILE_STRUCTURE.md)** | Complete folder and file organization |
-| **[Development Guidelines](./DEVELOPMENT_GUIDELINES.md)** | Coding standards, conventions, and best practices |
-| **[Design System Guide](./DESIGN_SYSTEM_GUIDE.md)** | UI components, colors, typography, and design tokens |
-| **[AI Rules](./AI_RULES.md)** | Guidelines for AI-assisted development |
-| **[Dependencies](./DEPENDENCIES.md)** | Complete list of project dependencies and their purposes |
+| Document                                                  | Description                                              |
+| --------------------------------------------------------- | -------------------------------------------------------- |
+| **[Project Overview](./PROJECT_OVERVIEW.md)**             | High-level project goals, features, and architecture     |
+| **[File Structure](./FILE_STRUCTURE.md)**                 | Complete folder and file organization                    |
+| **[Development Guidelines](./DEVELOPMENT_GUIDELINES.md)** | Coding standards, conventions, and best practices        |
+| **[Design System Guide](./DESIGN_SYSTEM_GUIDE.md)**       | UI components, colors, typography, and design tokens     |
+| **[AI Rules](./AI_RULES.md)**                             | Guidelines for AI-assisted development                   |
+| **[Dependencies](./DEPENDENCIES.md)**                     | Complete list of project dependencies and their purposes |
 
 ## 🚀 Quick Start
 
 1. **Read the [Project Overview](./PROJECT_OVERVIEW.md)** to understand the business context
-2. **Check [File Structure](./FILE_STRUCTURE.md)** to understand the codebase organization  
+2. **Check [File Structure](./FILE_STRUCTURE.md)** to understand the codebase organization
 3. **Follow [Development Guidelines](./DEVELOPMENT_GUIDELINES.md)** for coding standards
 4. **Reference [Design System Guide](./DESIGN_SYSTEM_GUIDE.md)** when building UI components
 5. **Consult [AI Rules](./AI_RULES.md)** when working with AI tools

@@ -71,22 +71,26 @@ vantage-lane-2.0/
 ## 🎯 DESIGN PRINCIPLES
 
 ### **1. Atomic Design System**
+
 - **ui/**: Pure atomic components (no business logic)
 - **shared/**: Composed components with minimal logic
 - **features/**: Complete business modules
 
 ### **2. Domain-Driven Architecture**
+
 - Each **feature** is self-contained and modular
 - Clear boundaries between domains (booking, auth, payments)
 - Easy to extract or refactor individual features
 
 ### **3. Separation of Concerns**
+
 - **Components**: Only UI rendering
 - **Lib**: Pure logic and utilities
 - **Server**: Business logic and API handling
 - **Types**: Centralized type definitions
 
 ### **4. Scalability First**
+
 - Modular structure supports team collaboration
 - Clear import/export patterns
 - Easy to add new features without conflicts
@@ -109,14 +113,14 @@ User Interaction → Component → Hook → Service → API → Database
 
 ## 📦 IMPORT PATTERNS
 
-| Purpose | Example |
-|---------|---------|
-| UI Components | `import { Button } from "@/components/ui"` |
-| Shared Components | `import { PricingCard } from "@/components/shared"` |
-| Feature Modules | `import { BookingWizard } from "@/components/features/booking"` |
-| Utils | `import { cn } from "@/lib/utils/cn"` |
-| Hooks | `import { useDebounce } from "@/lib/hooks/useDebounce"` |
-| Types | `import { BookingType } from "@/types/booking"` |
+| Purpose           | Example                                                         |
+| ----------------- | --------------------------------------------------------------- |
+| UI Components     | `import { Button } from "@/components/ui"`                      |
+| Shared Components | `import { PricingCard } from "@/components/shared"`             |
+| Feature Modules   | `import { BookingWizard } from "@/components/features/booking"` |
+| Utils             | `import { cn } from "@/lib/utils/cn"`                           |
+| Hooks             | `import { useDebounce } from "@/lib/hooks/useDebounce"`         |
+| Types             | `import { BookingType } from "@/types/booking"`                 |
 
 ## 📚 RECOMMENDED DOCS STRUCTURE
 

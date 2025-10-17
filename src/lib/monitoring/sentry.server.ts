@@ -1,8 +1,8 @@
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from '@sentry/nextjs'
 
-import { env } from '@/lib/env';
+import { env } from '@/lib/env'
 
-const SENTRY_DSN = env.SENTRY_DSN || env.NEXT_PUBLIC_SENTRY_DSN;
+const SENTRY_DSN = env.SENTRY_DSN || env.NEXT_PUBLIC_SENTRY_DSN
 
 if (SENTRY_DSN && SENTRY_DSN.length > 0) {
   Sentry.init({
@@ -21,18 +21,18 @@ if (SENTRY_DSN && SENTRY_DSN.length > 0) {
     beforeSend(event) {
       // Add server context
       if (event.extra) {
-        event.extra.server = true;
-        event.extra.region = process.env.VERCEL_REGION;
+        event.extra.server = true
+        event.extra.region = process.env.VERCEL_REGION
       }
 
-      return event;
+      return event
     },
 
     integrations: [
       // Add performance monitoring
       Sentry.httpIntegration(),
     ],
-  });
+  })
 }
 
-export { Sentry };
+export { Sentry }

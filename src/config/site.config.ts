@@ -1,6 +1,6 @@
 /**
  * 🌐 Site Configuration - Vantage Lane 2.0
- * 
+ *
  * Centralized configuration for site-wide settings.
  * Eliminates hardcoding and enables enterprise scalability.
  */
@@ -96,7 +96,11 @@ export const footer = {
 
   social: [
     { href: 'https://twitter.com/vantagelane', label: 'Twitter', icon: 'twitter' },
-    { href: 'https://linkedin.com/company/vantage-lane', label: 'LinkedIn', icon: 'linkedin' },
+    {
+      href: 'https://linkedin.com/company/vantage-lane',
+      label: 'LinkedIn',
+      icon: 'linkedin',
+    },
     { href: 'https://instagram.com/vantagelane', label: 'Instagram', icon: 'instagram' },
   ] as const satisfies readonly SocialLink[],
 
@@ -113,7 +117,8 @@ export const footer = {
 export const siteMetadata = {
   name: 'Vantage Lane',
   title: 'Vantage Lane - Premium Chauffeur Services',
-  description: 'Experience luxury transportation in London with professional chauffeurs and exceptional service.',
+  description:
+    'Experience luxury transportation in London with professional chauffeurs and exceptional service.',
   url: 'https://vantagelane.co.uk',
   ogImage: '/og-image.jpg',
   company: {

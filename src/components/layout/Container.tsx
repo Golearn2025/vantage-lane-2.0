@@ -1,6 +1,6 @@
-import type React from 'react';
+import type React from 'react'
 
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/lib/utils/cn'
 
 /**
  * 📦 Container component
@@ -41,15 +41,15 @@ import { cn } from '@/lib/utils/cn';
 
 export interface ContainerProps {
   /** Content to render inside the container */
-  children: React.ReactNode;
+  children: React.ReactNode
   /** Preset max-width variant for different content types */
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
   /** Additional Tailwind classes for customization */
-  className?: string;
+  className?: string
   /** HTML element type for semantic markup */
-  as?: React.ElementType;
+  as?: React.ElementType
   /** Removes max-width constraints for full-width layouts */
-  fluid?: boolean;
+  fluid?: boolean
 }
 
 export function Container({
@@ -79,7 +79,7 @@ export function Container({
     >
       {children}
     </Tag>
-  );
+  )
 }
 
-export default Container;
+export default Container
