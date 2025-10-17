@@ -3,87 +3,92 @@
  * Strict TypeScript types fără any, bazate pe design tokens
  */
 
-import type { ComponentPropsWithRef, ElementType, ReactNode } from 'react'
-import type { designTokens } from '@/config/theme.config'
-import type { luxuryCardTokens } from '@/design-system/tokens/luxury-card'
+import type { ComponentPropsWithRef, ElementType, ReactNode } from 'react';
 
-// Extract exact types from design tokens
-type LuxuryCardColors = keyof typeof luxuryCardTokens.colors
-type EffectDuration = keyof typeof designTokens.animations.duration
-type ShadowVariant = keyof typeof luxuryCardTokens.shadows
+// Reserved for future design token integration
+// import type { designTokens } from '@/config/theme.config';
+// import type { luxuryCardTokens } from '@/design-system/tokens/luxury-card';
+
+// Extract exact types from design tokens (commented until needed)
+// type LuxuryCardColors = keyof typeof luxuryCardTokens.colors;
+// type EffectDuration = keyof typeof designTokens.animations.duration;
+// type ShadowVariant = keyof typeof luxuryCardTokens.shadows;
 
 // Luxury card variants
-export type LuxuryCardVariant = 'shimmer' | 'glow' | 'minimal' | 'premium'
+export type LuxuryCardVariant = 'shimmer' | 'glow' | 'minimal' | 'premium';
 
-// Luxury card sizes  
-export type LuxuryCardSize = 'sm' | 'md' | 'lg' | 'xl'
+// Luxury card sizes
+export type LuxuryCardSize = 'sm' | 'md' | 'lg' | 'xl';
 
 // Hover effects
-export type LuxuryCardHover = 'shimmer' | 'glow' | 'lift' | 'none'
+export type LuxuryCardHover = 'shimmer' | 'glow' | 'lift' | 'none';
 
 // Polymorphic component props
 type PolymorphicComponentProps<T extends ElementType> = {
-  as?: T
-} & ComponentPropsWithRef<T>
+  as?: T;
+} & ComponentPropsWithRef<T>;
 
 // Base luxury card props
 export interface LuxuryCardBaseProps {
   /** Visual variant of the card */
-  variant?: LuxuryCardVariant
-  
+  variant?: LuxuryCardVariant;
+
   /** Size of the card */
-  size?: LuxuryCardSize
-  
+  size?: LuxuryCardSize;
+
   /** Hover effect type */
-  hover?: LuxuryCardHover
-  
+  hover?: LuxuryCardHover;
+
   /** Custom glow color (overrides theme) */
-  glowColor?: string
-  
+  glowColor?: string;
+
   /** Custom shimmer color (overrides theme) */
-  shimmerColor?: string
-  
+  shimmerColor?: string;
+
   /** Disable all hover effects */
-  disabled?: boolean
-  
+  disabled?: boolean;
+
   /** Additional CSS classes */
-  className?: string
-  
+  className?: string;
+
   /** Card content */
-  children?: ReactNode
-  
+  children?: ReactNode;
+
   // Props-based content (simple API)
   /** Icon element or component */
-  icon?: ReactNode
-  
+  icon?: ReactNode;
+
   /** Card title */
-  title?: string
-  
+  title?: string;
+
   /** Card description/content */
-  description?: string
-  
+  description?: string;
+
   /** Footer content */
-  footer?: ReactNode
+  footer?: ReactNode;
 }
 
 // Polymorphic luxury card props
-export type LuxuryCardProps<T extends ElementType = 'div'> = 
-  LuxuryCardBaseProps & PolymorphicComponentProps<T>
+export type LuxuryCardProps<T extends ElementType = 'div'> = LuxuryCardBaseProps &
+  PolymorphicComponentProps<T>;
 
 // Style configuration types
 export interface LuxuryCardStyleConfig {
-  base: string
-  variants: Record<LuxuryCardVariant, string>
-  sizes: Record<LuxuryCardSize, string>
-  hover: Record<LuxuryCardHover, {
-    container: string
-    overlay?: string
-    shimmer?: string
-  }>
+  base: string;
+  variants: Record<LuxuryCardVariant, string>;
+  sizes: Record<LuxuryCardSize, string>;
+  hover: Record<
+    LuxuryCardHover,
+    {
+      container: string;
+      overlay?: string;
+      shimmer?: string;
+    }
+  >;
 }
 
 // Component display name type
 export interface LuxuryCardComponent {
-  <T extends ElementType = 'div'>(props: LuxuryCardProps<T>): JSX.Element
-  displayName: string
+  <T extends ElementType = 'div'>(props: LuxuryCardProps<T>): ReactNode;
+  displayName: string;
 }

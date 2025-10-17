@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
-import { log } from '@/lib/logger'
-import { captureException } from '@/lib/monitoring'
+import { log } from '@/lib/logger';
+import { captureException } from '@/lib/monitoring';
 
 interface ErrorProps {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }
 
 export default function GlobalError({ error, reset }: ErrorProps) {
@@ -16,7 +16,7 @@ export default function GlobalError({ error, reset }: ErrorProps) {
     log.error('Global error boundary triggered', error, {
       digest: error.digest,
       stack: error.stack,
-    })
+    });
 
     // Send to Sentry
     captureException(error, {
@@ -24,8 +24,8 @@ export default function GlobalError({ error, reset }: ErrorProps) {
         component: 'GlobalErrorBoundary',
         digest: error.digest,
       },
-    })
-  }, [error])
+    });
+  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-neutral-900 px-4">
@@ -41,17 +41,15 @@ export default function GlobalError({ error, reset }: ErrorProps) {
         <div className="mb-8">
           <h1 className="mb-4 text-2xl font-bold text-white">Something went wrong</h1>
           <p className="leading-relaxed text-neutral-400">
-            We apologize for the inconvenience. Our team has been notified and is working
-            to resolve this issue.
+            We apologize for the inconvenience. Our team has been notified and is working to resolve
+            this issue.
           </p>
         </div>
 
         {/* Error Details (Development only) */}
         {process.env.NODE_ENV === 'development' && (
           <div className="mb-8 rounded-lg bg-neutral-800 p-4 text-left">
-            <h3 className="mb-2 text-sm font-medium text-red-400">
-              Error Details (Development)
-            </h3>
+            <h3 className="mb-2 text-sm font-medium text-red-400">Error Details (Development)</h3>
             <div className="overflow-x-auto font-mono text-xs text-neutral-300">
               <div className="mb-2">
                 <strong>Message:</strong> {error.message}
@@ -63,9 +61,7 @@ export default function GlobalError({ error, reset }: ErrorProps) {
               )}
               {error.stack && (
                 <details className="mt-2">
-                  <summary className="cursor-pointer text-neutral-400">
-                    Stack Trace
-                  </summary>
+                  <summary className="cursor-pointer text-neutral-400">Stack Trace</summary>
                   <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-xs">
                     {error.stack}
                   </pre>
@@ -113,5 +109,5 @@ export default function GlobalError({ error, reset }: ErrorProps) {
         )}
       </div>
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import type React from 'react'
+import type React from 'react';
 
-import { cn } from '@/lib/utils/cn'
+import { cn } from '@/lib/utils/cn';
 
-import { Container } from './Container'
+import { Container } from './Container';
 
 /**
  * 🧱 Section (Vantage Lane 2.0)
@@ -30,25 +30,25 @@ import { Container } from './Container'
 
 export interface SectionProps {
   /** Section content */
-  readonly children: React.ReactNode
+  readonly children: React.ReactNode;
   /** Vertical padding scale */
-  readonly spacing?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
+  readonly spacing?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   /** Background variant */
-  readonly background?: 'transparent' | 'neutral' | 'accent' | 'gradient'
+  readonly background?: 'transparent' | 'neutral' | 'accent' | 'gradient';
   /** Auto-wrap in <Container /> */
-  readonly contained?: boolean
+  readonly contained?: boolean;
   /** Container size preset */
-  readonly containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
+  readonly containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
   /** Text alignment inside the section */
-  readonly align?: 'left' | 'center' | 'right'
+  readonly align?: 'left' | 'center' | 'right';
   /** Adds a fade-in animation */
-  readonly animate?: boolean
+  readonly animate?: boolean;
   /** Extra Tailwind classes */
-  readonly className?: string
+  readonly className?: string;
   /** Semantic tag (section, main, article, etc.) */
-  readonly as?: React.ElementType
+  readonly as?: React.ElementType;
   /** Section ID for anchor links */
-  readonly id?: string
+  readonly id?: string;
 }
 
 /**
@@ -85,7 +85,7 @@ export function Section({
     </Container>
   ) : (
     children
-  )
+  );
 
   return (
     <Tag
@@ -116,7 +116,7 @@ export function Section({
     >
       {content}
     </Tag>
-  )
+  );
 }
 
-export default Section
+export default Section;

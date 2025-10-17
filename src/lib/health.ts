@@ -1,40 +1,40 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-import { log } from '@/lib/logger'
+import { log } from '@/lib/logger';
 
 export interface HealthCheck {
-  name: string
-  status: 'healthy' | 'unhealthy' | 'degraded'
-  responseTime: number
-  error?: string
-  details?: Record<string, unknown>
+  name: string;
+  status: 'healthy' | 'unhealthy' | 'degraded';
+  responseTime: number;
+  error?: string;
+  details?: Record<string, unknown>;
 }
 
 export interface HealthReport {
-  status: 'healthy' | 'unhealthy' | 'degraded'
-  timestamp: string
-  uptime: number
-  version: string
-  checks: HealthCheck[]
+  status: 'healthy' | 'unhealthy' | 'degraded';
+  timestamp: string;
+  uptime: number;
+  version: string;
+  checks: HealthCheck[];
 }
 
 /**
  * Check Supabase database connectivity
  */
 async function checkDatabase(): Promise<HealthCheck> {
-  const start = Date.now()
+  const start = Date.now();
 
   try {
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL || '',
       process.env.SUPABASE_SERVICE_KEY || '',
       { auth: { autoRefreshToken: false, persistSession: false } },
-    )
+    );
 
     // Simple query to test connectivity
-    const { error } = await supabase.from('profiles').select('count').limit(1).single()
+    const { error } = await supabase.from('profiles').select('count').limit(1).single();
 
-    const responseTime = Date.now() - start
+    const responseTime = Date.now() - start;
 
     if (error && !error.message.includes('No rows found')) {
       return {
@@ -42,7 +42,7 @@ async function checkDatabase(): Promise<HealthCheck> {
         status: 'unhealthy',
         responseTime,
         error: error.message,
-      }
+      };
     }
 
     return {
@@ -50,14 +50,14 @@ async function checkDatabase(): Promise<HealthCheck> {
       status: responseTime < 1000 ? 'healthy' : 'degraded',
       responseTime,
       details: { connected: true },
-    }
+    };
   } catch (error) {
     return {
       name: 'database',
       status: 'unhealthy',
       responseTime: Date.now() - start,
       error: error instanceof Error ? error.message : 'Unknown error',
-    }
+    };
   }
 }
 
@@ -65,7 +65,7 @@ async function checkDatabase(): Promise<HealthCheck> {
  * Check Redis connectivity (if configured)
  */
 async function checkRedis(): Promise<HealthCheck> {
-  const start = Date.now()
+  const start = Date.now();
 
   if (!process.env.UPSTASH_REDIS_REST_URL) {
     return {
@@ -73,31 +73,31 @@ async function checkRedis(): Promise<HealthCheck> {
       status: 'degraded',
       responseTime: 0,
       details: { configured: false },
-    }
+    };
   }
 
   try {
-    const { Redis } = await import('@upstash/redis')
+    const { Redis } = await import('@upstash/redis');
     const redis = new Redis({
       url: process.env.UPSTASH_REDIS_REST_URL,
       token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-    })
+    });
 
-    await redis.ping()
-    const responseTime = Date.now() - start
+    await redis.ping();
+    const responseTime = Date.now() - start;
 
     return {
       name: 'redis',
       status: responseTime < 500 ? 'healthy' : 'degraded',
       responseTime,
-    }
+    };
   } catch (error) {
     return {
       name: 'redis',
       status: 'unhealthy',
       responseTime: Date.now() - start,
       error: error instanceof Error ? error.message : 'Redis error',
-    }
+    };
   }
 }
 
@@ -112,51 +112,47 @@ async function checkExternalServices(): Promise<HealthCheck[]> {
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=London&key=${process.env.GOOGLE_MAPS_API_KEY || ''}`,
     ),
-  ])
+  ]);
 
   return [
     {
       name: 'stripe',
-      status:
-        checks[0].status === 'fulfilled' && checks[0].value.ok ? 'healthy' : 'unhealthy',
+      status: checks[0].status === 'fulfilled' && checks[0].value.ok ? 'healthy' : 'unhealthy',
       responseTime: 0,
     },
     {
       name: 'googlemaps',
-      status:
-        checks[1].status === 'fulfilled' && checks[1].value.ok ? 'healthy' : 'unhealthy',
+      status: checks[1].status === 'fulfilled' && checks[1].value.ok ? 'healthy' : 'unhealthy',
       responseTime: 0,
     },
-  ]
+  ];
 }
 
 /**
  * Perform comprehensive health check
  */
 export async function performHealthCheck(): Promise<HealthReport> {
-  const startTime = Date.now()
+  const startTime = Date.now();
 
-  log.info('Starting health check')
+  log.info('Starting health check');
 
   // Run all checks in parallel
-  const basicChecks = await Promise.all([checkDatabase(), checkRedis()])
+  const basicChecks = await Promise.all([checkDatabase(), checkRedis()]);
 
-  const externalChecks = await checkExternalServices()
-  const allChecks = [...basicChecks, ...externalChecks]
+  const externalChecks = await checkExternalServices();
+  const allChecks = [...basicChecks, ...externalChecks];
 
   // Determine overall status
-  const hasUnhealthy = allChecks.some(
-    (check: HealthCheck) => check.status === 'unhealthy',
-  )
-  const hasDegraded = allChecks.some((check: HealthCheck) => check.status === 'degraded')
+  const hasUnhealthy = allChecks.some((check: HealthCheck) => check.status === 'unhealthy');
+  const hasDegraded = allChecks.some((check: HealthCheck) => check.status === 'degraded');
 
-  let overallStatus: 'healthy' | 'unhealthy' | 'degraded'
+  let overallStatus: 'healthy' | 'unhealthy' | 'degraded';
   if (hasUnhealthy) {
-    overallStatus = 'unhealthy'
+    overallStatus = 'unhealthy';
   } else if (hasDegraded) {
-    overallStatus = 'degraded'
+    overallStatus = 'degraded';
   } else {
-    overallStatus = 'healthy'
+    overallStatus = 'healthy';
   }
 
   const report: HealthReport = {
@@ -165,47 +161,47 @@ export async function performHealthCheck(): Promise<HealthReport> {
     uptime: process.uptime(),
     version: process.env.APP_VERSION || '1.0.0',
     checks: allChecks,
-  }
+  };
 
-  const duration = Date.now() - startTime
+  const duration = Date.now() - startTime;
   log.info('Health check completed', {
     status: overallStatus,
     duration,
     checksCount: allChecks.length,
-  })
+  });
 
-  return report
+  return report;
 }
 
 /**
  * Quick liveness check (for load balancers)
  */
 export async function livenessCheck(): Promise<{
-  status: 'ok' | 'error'
-  timestamp: string
+  status: 'ok' | 'error';
+  timestamp: string;
 }> {
   try {
     // Basic checks - process is running, memory usage reasonable
-    const memUsage = process.memoryUsage()
-    const isHealthy = memUsage.heapUsed < 512 * 1024 * 1024 // Less than 512MB
+    const memUsage = process.memoryUsage();
+    const isHealthy = memUsage.heapUsed < 512 * 1024 * 1024; // Less than 512MB
 
     if (!isHealthy) {
-      log.warn('Liveness check failed - high memory usage', { memUsage })
+      log.warn('Liveness check failed - high memory usage', { memUsage });
       return {
         status: 'error',
         timestamp: new Date().toISOString(),
-      }
+      };
     }
 
     return {
       status: 'ok',
       timestamp: new Date().toISOString(),
-    }
+    };
   } catch (error) {
-    log.error('Liveness check failed', error)
+    log.error('Liveness check failed', error);
     return {
       status: 'error',
       timestamp: new Date().toISOString(),
-    }
+    };
   }
 }

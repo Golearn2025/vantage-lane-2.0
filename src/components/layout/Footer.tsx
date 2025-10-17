@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import type React from 'react'
+import Link from 'next/link';
+import type React from 'react';
 
-import { footer } from '@/config/site.config'
-import { cn } from '@/lib/utils/cn'
+import { footer } from '@/config/site.config';
+import { cn } from '@/lib/utils/cn';
 
-import { Container } from './Container'
-import { Logo } from './navbar/Logo'
+import { Container } from './Container';
+import { Logo } from './navbar/Logo';
 
 /**
  * 🦶 Premium Footer for Vantage Lane 2.0
@@ -22,15 +22,15 @@ import { Logo } from './navbar/Logo'
  */
 
 export interface FooterProps {
-  readonly className?: string
+  readonly className?: string;
 }
 
 // Use config instead of hardcoded values
-const footerSections = footer.sections
-const socialLinks = footer.social
+const footerSections = footer.sections;
+const socialLinks = footer.social;
 
 export default function Footer({ className }: FooterProps): React.JSX.Element {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer
@@ -54,8 +54,8 @@ export default function Footer({ className }: FooterProps): React.JSX.Element {
           <div className="lg:col-span-2">
             <Logo size="lg" className="mb-6" />
             <p className="max-w-md text-sm leading-relaxed text-neutral-400 dark:text-neutral-500">
-              Premium chauffeur service in London. Experience luxury travel with our
-              professional drivers and exceptional fleet.
+              Premium chauffeur service in London. Experience luxury travel with our professional
+              drivers and exceptional fleet.
             </p>
 
             {/* Social icons */}
@@ -141,5 +141,5 @@ export default function Footer({ className }: FooterProps): React.JSX.Element {
         </div>
       </Container>
     </footer>
-  )
+  );
 }

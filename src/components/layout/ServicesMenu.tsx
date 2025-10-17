@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import type React from 'react'
-import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { navigation } from '@/config/site.config'
-import { cn } from '@/lib/utils/cn'
+import { navigation } from '@/config/site.config';
+import { cn } from '@/lib/utils/cn';
 
 /**
  * 🔽 Services Menu Dropdown for Vantage Lane 2.0
@@ -21,51 +21,51 @@ import { cn } from '@/lib/utils/cn'
 
 export interface ServicesMenuProps {
   /** Custom styling */
-  readonly className?: string
+  readonly className?: string;
 }
 
 // Use config instead of hardcoded values
-const services = navigation.services
+const services = navigation.services;
 
 /**
  * 🚗 Services dropdown menu
  */
 export function ServicesMenu({ className }: ServicesMenuProps): React.JSX.Element {
-  const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
-  const isServicesActive = pathname.startsWith('/services')
+  const isServicesActive = pathname.startsWith('/services');
 
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
+        setIsOpen(false);
       }
     }
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => document.removeEventListener('mousedown', handleClickOutside)
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
     }
-    return undefined
-  }, [isOpen])
+    return undefined;
+  }, [isOpen]);
 
   // Close dropdown on escape key
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        setIsOpen(false)
+        setIsOpen(false);
       }
     }
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape)
-      return () => document.removeEventListener('keydown', handleEscape)
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
     }
-    return undefined
-  }, [isOpen])
+    return undefined;
+  }, [isOpen]);
 
   return (
     <div ref={dropdownRef} className={cn('relative', className)}>
@@ -74,8 +74,8 @@ export function ServicesMenu({ className }: ServicesMenuProps): React.JSX.Elemen
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={e => {
           if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            setIsOpen(!isOpen)
+            e.preventDefault();
+            setIsOpen(!isOpen);
           }
         }}
         className={cn(
@@ -83,9 +83,7 @@ export function ServicesMenu({ className }: ServicesMenuProps): React.JSX.Elemen
           'hover:text-brand-primary focus:text-brand-primary',
           'rounded-sm px-1 py-1 focus:outline-none focus:ring-2 focus:ring-brand-primary/50',
           'flex items-center gap-1',
-          isServicesActive
-            ? 'text-brand-primary'
-            : 'text-neutral-300 hover:text-brand-primary',
+          isServicesActive ? 'text-brand-primary' : 'text-neutral-300 hover:text-brand-primary',
         )}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -93,21 +91,13 @@ export function ServicesMenu({ className }: ServicesMenuProps): React.JSX.Elemen
       >
         Services
         <svg
-          className={cn(
-            'h-4 w-4 transition-transform duration-200',
-            isOpen && 'rotate-180',
-          )}
+          className={cn('h-4 w-4 transition-transform duration-200', isOpen && 'rotate-180')}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
 
@@ -126,7 +116,7 @@ export function ServicesMenu({ className }: ServicesMenuProps): React.JSX.Elemen
         >
           <div className="p-2">
             {services.map(service => {
-              const isActive = pathname === service.href
+              const isActive = pathname === service.href;
 
               return (
                 <Link
@@ -148,13 +138,13 @@ export function ServicesMenu({ className }: ServicesMenuProps): React.JSX.Elemen
                     </div>
                   )}
                 </Link>
-              )
+              );
             })}
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default ServicesMenu
+export default ServicesMenu;

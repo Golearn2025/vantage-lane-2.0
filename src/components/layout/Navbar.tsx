@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { AnimatePresence, motion } from 'framer-motion'
-import { X } from 'lucide-react'
-import Link from 'next/link'
-import type React from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion';
+import { X } from 'lucide-react';
+import Link from 'next/link';
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { ThemeToggle } from '@/components/ui/theme-toggle'
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 /**
  * 🧭 Navbar.tsx – versiunea finală completă
  *
@@ -17,44 +17,44 @@ import { ThemeToggle } from '@/components/ui/theme-toggle'
  * - Enterprise-ready architecture
  */
 // Import navigation from centralized config
-import { navigation } from '@/config/site.config'
-import { cn } from '@/lib/utils/cn'
+import { navigation } from '@/config/site.config';
+import { cn } from '@/lib/utils/cn';
 
-import { Container } from './Container'
-import { Logo } from './navbar/Logo'
-import { NavLinks } from './navbar/NavLinks'
-import { UserMenu } from './navbar/UserMenu'
-import ServicesMenu from './ServicesMenu'
-import ServicesMenuMobile from './ServicesMenuMobile'
+import { Container } from './Container';
+import { Logo } from './navbar/Logo';
+import { NavLinks } from './navbar/NavLinks';
+import { UserMenu } from './navbar/UserMenu';
+import ServicesMenu from './ServicesMenu';
+import ServicesMenuMobile from './ServicesMenuMobile';
 
 // Use config instead of hardcoded values
-const navItems = navigation.main
+const navItems = navigation.main;
 
 export interface NavbarProps {
-  readonly className?: string
+  readonly className?: string;
 }
 
 export default function Navbar({ className }: NavbarProps): React.JSX.Element {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const panelRef = useRef<HTMLDivElement>(null)
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   // close on outside click
   useEffect(() => {
     const close = (e: MouseEvent) => {
       if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
-        setMobileOpen(false)
+        setMobileOpen(false);
       }
-    }
-    if (mobileOpen) document.addEventListener('mousedown', close)
-    return () => document.removeEventListener('mousedown', close)
-  }, [mobileOpen])
+    };
+    if (mobileOpen) document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
+  }, [mobileOpen]);
 
   // close on escape
   useEffect(() => {
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setMobileOpen(false)
-    if (mobileOpen) document.addEventListener('keydown', esc)
-    return () => document.removeEventListener('keydown', esc)
-  }, [mobileOpen])
+    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setMobileOpen(false);
+    if (mobileOpen) document.addEventListener('keydown', esc);
+    return () => document.removeEventListener('keydown', esc);
+  }, [mobileOpen]);
 
   return (
     <header
@@ -97,12 +97,7 @@ export default function Navbar({ className }: NavbarProps): React.JSX.Element {
                 {mobileOpen ? (
                   <X className="h-6 w-6" />
                 ) : (
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -163,5 +158,5 @@ export default function Navbar({ className }: NavbarProps): React.JSX.Element {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

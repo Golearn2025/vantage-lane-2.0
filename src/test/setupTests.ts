@@ -1,31 +1,31 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 
-import { vi } from 'vitest'
+import { vi } from 'vitest';
 
 // 🧩 Mock IntersectionObserver
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-;(globalThis as any).IntersectionObserver = class IntersectionObserver {
-  readonly root = null
-  readonly rootMargin = '0px'
-  readonly thresholds = []
+(globalThis as any).IntersectionObserver = class IntersectionObserver {
+  readonly root = null;
+  readonly rootMargin = '0px';
+  readonly thresholds = [];
 
   constructor() {}
   disconnect() {}
   observe() {}
   unobserve() {}
   takeRecords() {
-    return []
+    return [];
   }
-}
+};
 
 // 🧩 Mock ResizeObserver
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-;(globalThis as any).ResizeObserver = class ResizeObserver {
+(globalThis as any).ResizeObserver = class ResizeObserver {
   constructor() {}
   disconnect() {}
   observe() {}
   unobserve() {}
-}
+};
 
 // 🧩 Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -40,4 +40,4 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   })),
-})
+});

@@ -5,10 +5,8 @@
 
 export const env = {
   // Supabase
-  NEXT_PUBLIC_SUPABASE_URL:
-    process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://mock.supabase.co',
-  NEXT_PUBLIC_SUPABASE_ANON_KEY:
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'mock-anon-key',
+  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://mock.supabase.co',
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'mock-anon-key',
   SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY || 'mock-service-key',
 
   // Stripe
@@ -28,4 +26,4 @@ export const env = {
   NEXT_PUBLIC_VERCEL_ANALYTICS_ID: process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ID || '',
   SENTRY_DSN: process.env.SENTRY_DSN || '',
   NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN || '',
-} as const
+} as const;

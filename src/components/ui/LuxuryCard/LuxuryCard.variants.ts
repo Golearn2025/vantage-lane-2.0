@@ -23,18 +23,18 @@ const baseClasses = [
 // Variant-specific classes 
 const variantClasses = {
   shimmer: [
-    // Background gradient (dark mode compatible)
+    // Background gradient (light mode default, dark mode cu dark: prefix)
     'bg-gradient-to-br',
-    'from-[#1a1a1a]',
-    'via-[#0f0f0f]', 
-    'to-[#1a1a1a]',
-    'dark:from-white/8',
-    'dark:via-white/4',
-    'dark:to-white/2',
-    // Border
+    'from-white/95',
+    'via-neutral-50/90', 
+    'to-white/95',
+    'dark:from-[#1a1a1a]',
+    'dark:via-[#0f0f0f]',
+    'dark:to-[#1a1a1a]',
+    // Border  
     'border',
-    'border-neutral-800',
-    'dark:border-white/10',
+    'border-neutral-200',
+    'dark:border-neutral-800',
     'hover:border-[var(--luxury-glow-color)]/60',
     'dark:hover:border-[var(--luxury-glow-color)]/20',
     // Shadow (folosesc design tokens)
@@ -42,18 +42,18 @@ const variantClasses = {
     'hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.4),0_10px_10px_-5px_rgba(0,0,0,0.2),0_0_30px_rgba(203,178,106,0.15)]',
     // Hover scale
     'hover:scale-105',
-    `duration-[${designTokens.animations.duration.normal}]`
+    'duration-[var(--luxury-duration-normal)]'
   ].join(' '),
   
   glow: [
-    'bg-white/5',
-    'dark:bg-white/10',
+    'bg-neutral-50/80',
+    'dark:bg-white/5',
     'border',
-    'border-white/10',
-    'dark:border-white/20',
+    'border-neutral-200',
+    'dark:border-white/10',
     'hover:border-[var(--luxury-glow-color)]/50',
     'hover:shadow-[0_0_30px_rgba(203,178,106,0.3)]',
-    `duration-[${designTokens.animations.duration.normal}]`
+    'duration-[var(--luxury-duration-normal)]'
   ].join(' '),
   
   minimal: [
@@ -62,7 +62,7 @@ const variantClasses = {
     'border-neutral-200',
     'dark:border-neutral-800',
     'hover:border-[var(--luxury-glow-color)]/30',
-    `duration-[${designTokens.animations.duration.fast}]`
+    'duration-[var(--luxury-duration-fast)]'
   ].join(' '),
   
   premium: [
@@ -73,7 +73,7 @@ const variantClasses = {
     'border-[var(--luxury-glow-color)]/20',
     'hover:border-[var(--luxury-glow-color)]/60',
     'hover:shadow-[0_0_40px_rgba(203,178,106,0.4)]',
-    `duration-[${designTokens.animations.duration.slow}]`
+    'duration-[var(--luxury-duration-slow)]'
   ].join(' ')
 }
 
@@ -99,7 +99,7 @@ const hoverClasses = {
       'opacity-0',
       'group-hover:opacity-100',
       'transition-opacity',
-      `duration-[${luxuryCardTokens.effects.glow.duration}]`
+      'duration-[var(--luxury-glow-duration)]'
     ].join(' '),
     shimmer: [
       'absolute',
@@ -113,8 +113,8 @@ const hoverClasses = {
       '-translate-x-full',
       'group-hover:translate-x-full',
       'transition-transform',
-      `duration-[${luxuryCardTokens.effects.shimmer.duration}]`,
-      `${luxuryCardTokens.effects.shimmer.easing}`,
+      'duration-[var(--luxury-shimmer-duration)]',
+      'ease-out',
       'w-[200%]',
       'h-full'
     ].join(' ')
@@ -126,11 +126,11 @@ const hoverClasses = {
       'absolute',
       'inset-0',
       'rounded-xl',
-      'bg-[var(--luxury-glow-color)]/10',
+      'bg-[#CBB26A]/10',
       'opacity-0',
       'group-hover:opacity-100',
       'transition-opacity',
-      `duration-[${luxuryCardTokens.effects.glow.duration}]`
+      'duration-[var(--luxury-glow-duration)]'
     ].join(' ')
   },
   
@@ -144,7 +144,7 @@ const hoverClasses = {
       'opacity-0',
       'group-hover:opacity-100',
       'transition-opacity',
-      `duration-[${designTokens.animations.duration.normal}]`
+      'duration-[var(--luxury-duration-normal)]'
     ].join(' ')
   },
   

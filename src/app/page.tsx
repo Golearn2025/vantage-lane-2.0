@@ -1,8 +1,9 @@
-import { Section } from '@/components/layout'
-import { Button, Card, Text, LuxuryCard } from '@/components/ui'
-import { homeContent } from '@/config/content.config'
-import { Search, UserCheck, CarFront, CreditCard, Clock } from 'lucide-react'
-import Link from 'next/link'
+import { CarFront, Clock, CreditCard, Search, UserCheck } from 'lucide-react';
+import Link from 'next/link';
+
+import { Section } from '@/components/layout';
+import { Button, LuxuryCard, Text } from '@/components/ui';
+import { homeContent } from '@/config/content.config';
 
 export default function HomePage() {
   return (
@@ -39,51 +40,51 @@ export default function HomePage() {
             hover="shimmer"
             as={Link}
             href="/book-instantly"
-            icon={<Search className="w-full h-full" strokeWidth={1.2} />}
+            icon={<Search className="h-full w-full" strokeWidth={1.2} />}
             title="Book Instantly"
             description="Competitive rates with full transparency, premium vehicles, and instant confirmation - all in seconds."
           />
-          
+
           <LuxuryCard
             variant="shimmer"
-            size="md" 
+            size="md"
             hover="shimmer"
             as={Link}
             href="/chauffeurs"
-            icon={<UserCheck className="w-full h-full" strokeWidth={1.2} />}
+            icon={<UserCheck className="h-full w-full" strokeWidth={1.2} />}
             title="Professional Chauffeurs"
             description="Licensed, vetted, and experienced drivers providing exceptional service and local knowledge."
           />
-          
+
           <LuxuryCard
             variant="shimmer"
             size="md"
             hover="shimmer"
             as={Link}
             href="/fleet-details"
-            icon={<CarFront className="w-full h-full" strokeWidth={1.2} />}
+            icon={<CarFront className="h-full w-full" strokeWidth={1.2} />}
             title="The Finest Fleet"
             description="Prestige vehicles, curated with care from fully licensed operators."
           />
-          
+
           <LuxuryCard
             variant="shimmer"
             size="md"
             hover="shimmer"
             as={Link}
             href="/payments"
-            icon={<CreditCard className="w-full h-full" strokeWidth={1.2} />}
+            icon={<CreditCard className="h-full w-full" strokeWidth={1.2} />}
             title="Secure Payments"
             description="Safe and convenient payment options with transparent pricing and instant confirmation."
           />
-          
+
           <LuxuryCard
             variant="shimmer"
             size="md"
             hover="shimmer"
             as={Link}
             href="/support"
-            icon={<Clock className="w-full h-full" strokeWidth={1.2} />}
+            icon={<Clock className="h-full w-full" strokeWidth={1.2} />}
             title="Available 24/7"
             description="Round-the-clock service for airport transfers, business meetings, and special occasions."
           />
@@ -103,5 +104,5 @@ export default function HomePage() {
         </div>
       </Section>
     </>
-  )
+  );
 }

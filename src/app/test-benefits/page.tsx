@@ -3,56 +3,61 @@
  * Testez LuxuryCard component în context real
  */
 
-import { LuxuryCard } from '@/components/ui/LuxuryCard'
-import Link from 'next/link'
-import { Search, UserCheck, CarFront, CreditCard, Clock } from 'lucide-react'
+import { CarFront, Clock, CreditCard, Search, UserCheck } from 'lucide-react';
+import Link from 'next/link';
+
+import { LuxuryCard } from '@/components/ui/LuxuryCard';
 
 // Benefits data cu iconițe Lucide React (exact ca în original)
 const benefitsData = [
   {
     id: 'book-instantly',
     title: 'Book Instantly',
-    description: 'Competitive rates with full transparency, premium vehicles, and instant confirmation - all in seconds.',
-    icon: <Search className="w-full h-full" strokeWidth={1.2} />,
-    href: '/book-instantly'
+    description:
+      'Competitive rates with full transparency, premium vehicles, and instant confirmation - all in seconds.',
+    icon: <Search className="h-full w-full" strokeWidth={1.2} />,
+    href: '/book-instantly',
   },
   {
-    id: 'professional-chauffeurs', 
+    id: 'professional-chauffeurs',
     title: 'Professional Chauffeurs',
-    description: 'Licensed, vetted, and experienced drivers providing exceptional service and local knowledge.',
-    icon: <UserCheck className="w-full h-full" strokeWidth={1.2} />,
-    href: '/chauffeurs'
+    description:
+      'Licensed, vetted, and experienced drivers providing exceptional service and local knowledge.',
+    icon: <UserCheck className="h-full w-full" strokeWidth={1.2} />,
+    href: '/chauffeurs',
   },
   {
     id: 'finest-fleet',
     title: 'The Finest Chauffeur Fleet',
     description: 'Prestige vehicles, curated with care from fully licensed operators.',
-    icon: <CarFront className="w-full h-full" strokeWidth={1.2} />,
-    href: '/fleet-details'
+    icon: <CarFront className="h-full w-full" strokeWidth={1.2} />,
+    href: '/fleet-details',
   },
   {
     id: 'secure-payments',
-    title: 'Secure Payments', 
-    description: 'Safe and convenient payment options with transparent pricing and instant confirmation.',
-    icon: <CreditCard className="w-full h-full" strokeWidth={1.2} />,
-    href: '/payments'
+    title: 'Secure Payments',
+    description:
+      'Safe and convenient payment options with transparent pricing and instant confirmation.',
+    icon: <CreditCard className="h-full w-full" strokeWidth={1.2} />,
+    href: '/payments',
   },
   {
     id: 'available-247',
     title: 'Available 24/7',
-    description: 'Round-the-clock service for airport transfers, business meetings, and special occasions.',
-    icon: <Clock className="w-full h-full" strokeWidth={1.2} />,
-    href: '/support'
-  }
-]
+    description:
+      'Round-the-clock service for airport transfers, business meetings, and special occasions.',
+    icon: <Clock className="h-full w-full" strokeWidth={1.2} />,
+    href: '/support',
+  },
+];
 
 export default function TestBenefitsPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground p-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-background p-8 text-foreground">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-gold">🧪 Benefits Section Test</h1>
+        <div className="mb-12 text-center">
+          <h1 className="text-gold mb-4 text-4xl font-bold">🧪 Benefits Section Test</h1>
           <p className="text-lg text-neutral-300">
             Testing LuxuryCard component cu shimmer effects
           </p>
@@ -60,18 +65,16 @@ export default function TestBenefitsPage() {
 
         {/* Benefits Section (identic cu originalul) */}
         <section className="relative z-10 mx-auto max-w-[90rem] px-4 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Why Choose Our Service
-            </h2>
-            <p className="text-neutral-300 text-lg max-w-2xl mx-auto">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-semibold md:text-4xl">Why Choose Our Service</h2>
+            <p className="mx-auto max-w-2xl text-lg text-neutral-300">
               Experience London's only luxury chauffeur platform where choice meets transparency.
             </p>
           </div>
-          
+
           {/* Grid Layout (responsive) */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-            {benefitsData.map((benefit, index) => (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {benefitsData.map(benefit => (
               <LuxuryCard
                 key={benefit.id}
                 variant="shimmer"
@@ -89,11 +92,11 @@ export default function TestBenefitsPage() {
         </section>
 
         {/* Test Controls */}
-        <div className="mt-16 p-8 bg-neutral-800/50 rounded-xl">
-          <h3 className="text-xl font-semibold mb-4">🎛️ Test Controls</h3>
-          
+        <div className="mt-16 rounded-xl bg-neutral-800/50 p-8">
+          <h3 className="mb-4 text-xl font-semibold">🎛️ Test Controls</h3>
+
           {/* Single Card Tests */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <LuxuryCard
               variant="shimmer"
               size="sm"
@@ -101,7 +104,7 @@ export default function TestBenefitsPage() {
               title="Shimmer Effect"
               description="Hover pentru shimmer sweep"
             />
-            
+
             <LuxuryCard
               variant="glow"
               size="md"
@@ -109,7 +112,7 @@ export default function TestBenefitsPage() {
               title="Glow Effect"
               description="Hover pentru golden glow"
             />
-            
+
             <LuxuryCard
               variant="minimal"
               size="lg"
@@ -117,7 +120,7 @@ export default function TestBenefitsPage() {
               title="Lift Effect"
               description="Hover pentru lift animation"
             />
-            
+
             <LuxuryCard
               variant="premium"
               size="xl"
@@ -129,16 +132,16 @@ export default function TestBenefitsPage() {
 
           {/* Custom Content Test */}
           <div className="mb-8">
-            <h4 className="text-lg font-medium mb-4">Custom Content API:</h4>
+            <h4 className="mb-4 text-lg font-medium">Custom Content API:</h4>
             <LuxuryCard variant="shimmer" hover="shimmer">
               <div className="space-y-4">
                 <div className="text-6xl">🎯</div>
                 <h3 className="text-xl font-bold text-[#CBB26A]">Custom Layout</h3>
                 <p className="text-neutral-400">
                   Using children API pentru layout complet custom cu{' '}
-                  <span className="text-[#E5D485] font-semibold">markup</span> și styling.
+                  <span className="font-semibold text-[#E5D485]">markup</span> și styling.
                 </p>
-                <button className="px-4 py-2 bg-gradient-to-r from-[#CBB26A] to-[#E5D485] text-black rounded-md font-medium hover:from-[#E5D485] hover:to-[#CBB26A] transition-all">
+                <button className="rounded-md bg-gradient-to-r from-[#CBB26A] to-[#E5D485] px-4 py-2 font-medium text-black transition-all hover:from-[#E5D485] hover:to-[#CBB26A]">
                   Custom Action
                 </button>
               </div>
@@ -147,9 +150,9 @@ export default function TestBenefitsPage() {
 
           {/* Links */}
           <div className="text-center">
-            <Link 
-              href="/" 
-              className="inline-block px-6 py-3 bg-neutral-700 hover:bg-neutral-600 rounded-lg transition-colors"
+            <Link
+              href="/"
+              className="inline-block rounded-lg bg-neutral-700 px-6 py-3 transition-colors hover:bg-neutral-600"
             >
               ← Înapoi la Homepage
             </Link>
@@ -157,11 +160,11 @@ export default function TestBenefitsPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // SEO pentru test page
 export const metadata = {
   title: 'Benefits Test - Vantage Lane 2.0',
-  description: 'Test page pentru LuxuryCard component și Benefits section'
-}
+  description: 'Test page pentru LuxuryCard component și Benefits section',
+};

@@ -1,7 +1,7 @@
-import pino from 'pino'
+import pino from 'pino';
 
-const isDevelopment = process.env.NODE_ENV === 'development'
-const isTest = process.env.NODE_ENV === 'test'
+const isDevelopment = process.env.NODE_ENV === 'development';
+const isTest = process.env.NODE_ENV === 'test';
 
 // Pino logger configuration
 export const logger = pino({
@@ -30,7 +30,7 @@ export const logger = pino({
 
   // Silence in test environment
   ...(isTest && { level: 'silent' }),
-})
+});
 
 // Typed logger methods for better DX
 export const log = {
@@ -44,4 +44,4 @@ export const log = {
   debug: (message: string, meta?: Record<string, unknown>) => logger.debug(meta, message),
 
   trace: (message: string, meta?: Record<string, unknown>) => logger.trace(meta, message),
-}
+};

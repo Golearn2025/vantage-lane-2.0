@@ -30,8 +30,9 @@ export const luxuryCardTokens = {
   },
   shadows: {
     base: '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
-    hover: '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2), 0 0 30px rgba(203, 178, 106, 0.15)',
+    hover:
+      '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2), 0 0 30px rgba(203, 178, 106, 0.15)',
   },
-} as const
+} as const;
 
-export default luxuryCardTokens
+export default luxuryCardTokens;

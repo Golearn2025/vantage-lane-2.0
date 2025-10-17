@@ -1,6 +1,6 @@
-import { Section } from '@/components/layout'
-import { Button, Card, Text } from '@/components/ui'
-import { aboutContent } from '@/config/content.config'
+import { Section } from '@/components/layout';
+import { Button, Card, Text } from '@/components/ui';
+import { aboutContent } from '@/config/content.config';
 
 export default function AboutPage() {
   return (
@@ -25,11 +25,7 @@ export default function AboutPage() {
               {aboutContent.story.title}
             </Text>
             {aboutContent.story.paragraphs.map((paragraph, i) => (
-              <Text
-                key={i}
-                variant="body"
-                className="mb-4 text-neutral-600 dark:text-neutral-400"
-              >
+              <Text key={i} variant="body" className="mb-4 text-neutral-600 dark:text-neutral-400">
                 {paragraph}
               </Text>
             ))}
@@ -45,11 +41,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <Card
-            variant="default"
-            padding="lg"
-            className="flex h-80 items-center justify-center"
-          >
+          <Card variant="default" padding="lg" className="flex h-80 items-center justify-center">
             <Text variant="body" className="text-center text-neutral-500">
               [Company Image Placeholder]
             </Text>
@@ -98,5 +90,5 @@ export default function AboutPage() {
         </div>
       </Section>
     </>
-  )
+  );
 }

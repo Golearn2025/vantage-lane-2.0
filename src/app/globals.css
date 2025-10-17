@@ -11,6 +11,13 @@
     /* Force dark color-scheme to prevent flash */
     color-scheme: dark;
     
+    /* 🎯 Luxury Card Animation Durations (Tailwind compatible) */
+    --luxury-duration-fast: 150ms;
+    --luxury-duration-normal: 300ms;
+    --luxury-duration-slow: 500ms;
+    --luxury-shimmer-duration: 1000ms;
+    --luxury-glow-duration: 300ms;
+    
     /* Dark mode CSS variables (active immediately) */
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
