@@ -1,31 +1,32 @@
-import * as Sentry from '@sentry/nextjs'
-import { env } from '@/lib/env'
+import * as Sentry from '@sentry/nextjs';
 
-const SENTRY_DSN = env.NEXT_PUBLIC_SENTRY_DSN
+import { env } from '@/lib/env';
+
+const SENTRY_DSN = env.NEXT_PUBLIC_SENTRY_DSN;
 
 if (SENTRY_DSN) {
   Sentry.init({
     dsn: SENTRY_DSN,
-    
+
     // Performance monitoring
     tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
-    
+
     // Session replay
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
-    
+
     // Environment
     environment: process.env.NODE_ENV || 'development',
-    
+
     // User context
     beforeSend(event) {
       // Filter out development errors
       if (process.env.NODE_ENV === 'development') {
-        return null
+        return null;
       }
-      return event
+      return event;
     },
-    
+
     // Custom error filtering
     ignoreErrors: [
       // Browser extensions
@@ -35,7 +36,7 @@ if (SENTRY_DSN) {
       'NetworkError',
       'Failed to fetch',
     ],
-  })
+  });
 }
 
-export { Sentry }
+export { Sentry };
