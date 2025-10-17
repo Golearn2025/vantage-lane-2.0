@@ -73,9 +73,14 @@ export function ThemeProvider({
         ? systemTheme || 'dark' // Default to dark for Vantage Lane
         : themeState
 
-    // Apply theme
+    // Apply theme - CSS defaults to dark, add classes as needed
     if (attribute === 'class') {
-      root.classList.add(actualTheme)
+      if (actualTheme === 'light') {
+        root.classList.add('light')
+      } else {
+        // Also add .dark for theme toggle compatibility
+        root.classList.add('dark')  
+      }
     } else {
       root.setAttribute(attribute, actualTheme)
     }

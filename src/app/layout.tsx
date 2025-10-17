@@ -22,27 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const storageKey = 'vantage-lane-theme';
-                  const stored = localStorage.getItem(storageKey);
-                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  const theme = stored || (prefersDark ? 'dark' : 'light');
-                  if (theme === 'dark') document.documentElement.classList.add('dark');
-                  else document.documentElement.classList.remove('dark');
-                } catch (_) {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={cn(
           inter.className,
@@ -54,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          disableTransitionOnChange={true}
+          disableTransitionOnChange={false}
         >
           <Layout>{children}</Layout>
         </ThemeProvider>

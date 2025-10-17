@@ -1,13 +1,9 @@
 /**
  * 🎨 Theme Configuration - Vantage Lane 2.0
- *
- * Centralized design tokens and theme variants.
- * Enables consistent styling across all components.
+ * Scalable orchestrator that imports from design-system/tokens
  */
 
-/**
- * 🎯 Design Tokens
- */
+// Consolidated design tokens (inline for stability)
 export const designTokens = {
   colors: {
     brand: {
@@ -35,6 +31,7 @@ export const designTokens = {
       info: '#3B82F6',
     },
   },
+  // Typography tokens (inline for now, can be moved to tokens/typography.ts)
   typography: {
     fontFamily: {
       sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -60,9 +57,10 @@ export const designTokens = {
       bold: '700',
     },
   },
+  // Spacing tokens (inline for now, can be moved to tokens/spacing.ts)
   spacing: {
     xs: '0.5rem',
-    sm: '0.75rem',
+    sm: '0.75rem', 
     md: '1rem',
     lg: '1.5rem',
     xl: '2rem',
@@ -71,6 +69,7 @@ export const designTokens = {
     '4xl': '6rem',
     '5xl': '8rem',
   },
+  // Border radius tokens (inline for now, can be moved to tokens/radius.ts)
   borderRadius: {
     sm: '0.25rem',
     md: '0.375rem',
@@ -79,12 +78,14 @@ export const designTokens = {
     '2xl': '1rem',
     full: '9999px',
   },
+  // Shadow tokens (inline for now, can be moved to tokens/shadows.ts)
   shadows: {
     sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
     md: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
     lg: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
     xl: '0 20px 25px -5px rgb(0 0 0 / 0.1)',
   },
+  // Animation tokens (inline for now, can be moved to tokens/animations.ts)
   animations: {
     duration: {
       fast: '150ms',
@@ -97,28 +98,33 @@ export const designTokens = {
       bounce: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
     },
   },
+} as const
 
-  // Z-index layering system
-  zIndex: {
-    base: 0,
-    dropdown: 10,
-    overlay: 20,
-    modal: 50,
-    toast: 100,
+export const propTokens = {
+  variants: {
+    primary: 'primary',
+    secondary: 'secondary', 
+    outline: 'outline',
+    ghost: 'ghost',
+    destructive: 'destructive',
+  },
+  sizes: {
+    sm: 'sm',
+    md: 'md',
+    lg: 'lg', 
+    xl: 'xl',
   },
 } as const
 
 /**
- * 🧩 Component Variants
+ * 🧩 Component Variants (will be moved to variants/ folder)
  */
 export const componentVariants = {
   button: {
     variants: {
       primary: 'bg-brand-primary hover:bg-brand-primary/90 text-black',
-      secondary:
-        'bg-neutral-200 hover:bg-neutral-300 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100',
-      outline:
-        'border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-black',
+      secondary: 'bg-neutral-200 hover:bg-neutral-300 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-100',
+      outline: 'border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-black',
       ghost: 'text-brand-primary hover:bg-brand-primary/10',
       destructive: 'bg-red-500 hover:bg-red-600 text-white',
     },
@@ -128,17 +134,15 @@ export const componentVariants = {
       lg: 'px-6 py-3 text-lg',
       xl: 'px-8 py-4 text-xl',
     },
-    base: 'inline-flex items-center justify-center font-semibold rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary/50',
+    base: `inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary/50`,
   },
   card: {
     variants: {
-      default:
-        'bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800',
-      elevated:
-        'bg-white dark:bg-neutral-900 shadow-lg border border-neutral-200 dark:border-neutral-800',
+      default: 'bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800',
+      elevated: 'bg-white dark:bg-neutral-900 shadow-lg border border-neutral-200 dark:border-neutral-800',
       glass: 'bg-white/10 backdrop-blur-md border border-white/10',
     },
-    base: 'rounded-lg transition-colors',
+    base: `rounded-lg transition-colors duration-300 ease-in-out`,
   },
   text: {
     variants: {
@@ -156,11 +160,9 @@ export const componentVariants = {
   },
   badge: {
     variants: {
-      default:
-        'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100',
+      default: 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100',
       primary: 'bg-brand-primary text-black',
-      secondary:
-        'bg-neutral-200 text-neutral-900 dark:bg-neutral-700 dark:text-neutral-100',
+      secondary: 'bg-neutral-200 text-neutral-900 dark:bg-neutral-700 dark:text-neutral-100',
       success: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100',
       warning: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100',
       error: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100',
@@ -175,49 +177,12 @@ export const componentVariants = {
 } as const
 
 /**
- * 🌓 Theme Presets
- */
-export const themePresets = {
-  vantage: {
-    name: 'Vantage Lane',
-    colors: {
-      primary: designTokens.colors.brand.primary,
-      secondary: designTokens.colors.brand.secondary,
-      background: designTokens.colors.neutral[950],
-      foreground: designTokens.colors.neutral[50],
-    },
-  },
-  royal: {
-    name: 'Royal Edition',
-    colors: {
-      primary: '#A67C52',
-      secondary: '#8B6914',
-      background: '#111111',
-      foreground: '#FAFAFA',
-    },
-  },
-} as const
-
-/**
- * 🌐 CSS Variables for Theme Switching
- */
-export const cssVariables = {
-  '--color-brand-primary': designTokens.colors.brand.primary,
-  '--color-brand-secondary': designTokens.colors.brand.secondary,
-  '--color-brand-accent': designTokens.colors.brand.accent,
-  '--transition-fast': `${designTokens.animations.duration.fast} ${designTokens.animations.easing.ease}`,
-  '--transition-normal': `${designTokens.animations.duration.normal} ${designTokens.animations.easing.ease}`,
-  '--transition-slow': `${designTokens.animations.duration.slow} ${designTokens.animations.easing.ease}`,
-} as const
-
-/**
  * 🎨 Unified Theme Configuration
  */
 export const themeConfig = {
   tokens: designTokens,
+  props: propTokens,
   components: componentVariants,
-  presets: themePresets,
-  cssVars: cssVariables,
 } as const
 
 export default themeConfig
