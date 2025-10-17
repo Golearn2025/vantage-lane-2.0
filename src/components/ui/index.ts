@@ -15,5 +15,14 @@ export { Card } from './Card'
 export type { TextProps } from './Text'
 export { Text } from './Text'
 
+// Luxury Components
+export type { 
+  LuxuryCardProps, 
+  LuxuryCardVariant, 
+  LuxuryCardSize, 
+  LuxuryCardHover 
+} from './LuxuryCard'
+export { LuxuryCard } from './LuxuryCard'
+
 // Theme Controls
 export { ThemeToggle } from './theme-toggle'
